@@ -47,6 +47,9 @@
 			this.btnXoa = new System.Windows.Forms.Button();
 			this.btnThem = new System.Windows.Forms.Button();
 			this.dgvNhapHang = new System.Windows.Forms.DataGridView();
+			this.button1 = new System.Windows.Forms.Button();
+			this.button2 = new System.Windows.Forms.Button();
+			this.button3 = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -181,8 +184,11 @@
 			// 
 			// groupBox3
 			// 
+			this.groupBox3.Controls.Add(this.button3);
 			this.groupBox3.Controls.Add(this.btnNhapHang);
+			this.groupBox3.Controls.Add(this.button2);
 			this.groupBox3.Controls.Add(this.btnSua);
+			this.groupBox3.Controls.Add(this.button1);
 			this.groupBox3.Controls.Add(this.btnXoa);
 			this.groupBox3.Controls.Add(this.btnThem);
 			this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
@@ -195,42 +201,47 @@
 			// 
 			// btnNhapHang
 			// 
-			this.btnNhapHang.Location = new System.Drawing.Point(26, 248);
+			this.btnNhapHang.Location = new System.Drawing.Point(26, 205);
 			this.btnNhapHang.Name = "btnNhapHang";
-			this.btnNhapHang.Size = new System.Drawing.Size(155, 44);
+			this.btnNhapHang.Size = new System.Drawing.Size(146, 39);
 			this.btnNhapHang.TabIndex = 0;
 			this.btnNhapHang.Text = "Nhập hàng";
 			this.btnNhapHang.UseVisualStyleBackColor = true;
+			this.btnNhapHang.Click += new System.EventHandler(this.btnNhapHang_Click);
 			// 
 			// btnSua
 			// 
-			this.btnSua.Location = new System.Drawing.Point(26, 177);
+			this.btnSua.Location = new System.Drawing.Point(26, 147);
 			this.btnSua.Name = "btnSua";
-			this.btnSua.Size = new System.Drawing.Size(155, 44);
+			this.btnSua.Size = new System.Drawing.Size(146, 39);
 			this.btnSua.TabIndex = 0;
 			this.btnSua.Text = "Sửa";
 			this.btnSua.UseVisualStyleBackColor = true;
+			this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
 			// 
 			// btnXoa
 			// 
-			this.btnXoa.Location = new System.Drawing.Point(26, 107);
+			this.btnXoa.Location = new System.Drawing.Point(26, 94);
 			this.btnXoa.Name = "btnXoa";
-			this.btnXoa.Size = new System.Drawing.Size(155, 44);
+			this.btnXoa.Size = new System.Drawing.Size(146, 39);
 			this.btnXoa.TabIndex = 0;
 			this.btnXoa.Text = "Xóa";
 			this.btnXoa.UseVisualStyleBackColor = true;
+			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
 			// 
 			// btnThem
 			// 
 			this.btnThem.Location = new System.Drawing.Point(26, 41);
 			this.btnThem.Name = "btnThem";
-			this.btnThem.Size = new System.Drawing.Size(155, 44);
+			this.btnThem.Size = new System.Drawing.Size(146, 39);
 			this.btnThem.TabIndex = 0;
 			this.btnThem.Text = "Thêm";
 			this.btnThem.UseVisualStyleBackColor = true;
+			this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
 			// 
 			// dgvNhapHang
 			// 
+			this.dgvNhapHang.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dgvNhapHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvNhapHang.Location = new System.Drawing.Point(123, 505);
 			this.dgvNhapHang.Name = "dgvNhapHang";
@@ -238,6 +249,36 @@
 			this.dgvNhapHang.RowTemplate.Height = 24;
 			this.dgvNhapHang.Size = new System.Drawing.Size(1208, 319);
 			this.dgvNhapHang.TabIndex = 2;
+			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(26, 264);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(146, 39);
+			this.button1.TabIndex = 0;
+			this.button1.Text = "Lưu";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.btnXoa_Click);
+			// 
+			// button2
+			// 
+			this.button2.Location = new System.Drawing.Point(26, 324);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(146, 39);
+			this.button2.TabIndex = 0;
+			this.button2.Text = "Hủy";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.btnSua_Click);
+			// 
+			// button3
+			// 
+			this.button3.Location = new System.Drawing.Point(26, 381);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(146, 39);
+			this.button3.TabIndex = 0;
+			this.button3.Text = "Tìm kiếm";
+			this.button3.UseVisualStyleBackColor = true;
+			this.button3.Click += new System.EventHandler(this.btnNhapHang_Click);
 			// 
 			// FormNhapKho
 			// 
@@ -249,6 +290,7 @@
 			this.Controls.Add(this.groupBox1);
 			this.Name = "FormNhapKho";
 			this.Text = "Nhập Kho";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormNhapKho_FormClosing);
 			this.Load += new System.EventHandler(this.FormNhapKho_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
@@ -281,6 +323,9 @@
 		private System.Windows.Forms.Button btnXoa;
 		private System.Windows.Forms.Button btnThem;
 		private System.Windows.Forms.DataGridView dgvNhapHang;
+		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button button1;
 	}
 }
 

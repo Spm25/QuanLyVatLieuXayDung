@@ -15,8 +15,8 @@ namespace QuanLyVatLieuXayDung
 
 		public DatabaseConnector()
 		{
-			this.connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=VatLieuXayDung;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
-			this.connection = new SqlConnection(connectionString);
+			this.connectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=VatLieuXayDung;Integrated Security=True";
+			this.connection = new SqlConnection(this.connectionString);
 		}
 
 		private void OpenConnection()
@@ -57,12 +57,9 @@ namespace QuanLyVatLieuXayDung
 				return command.ExecuteNonQuery();
 			}
 		}
-		private void Dispose()
+		public void Dispose()
 		{
-			if (connection.State == ConnectionState.Closed)
-			{
-				connection.Close();
-			}
+			connection.Dispose();
 		}
 	}
 }
