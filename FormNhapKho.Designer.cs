@@ -42,14 +42,14 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.button3 = new System.Windows.Forms.Button();
 			this.btnNhapHang = new System.Windows.Forms.Button();
+			this.button2 = new System.Windows.Forms.Button();
 			this.btnSua = new System.Windows.Forms.Button();
+			this.button1 = new System.Windows.Forms.Button();
 			this.btnXoa = new System.Windows.Forms.Button();
 			this.btnThem = new System.Windows.Forms.Button();
 			this.dgvNhapHang = new System.Windows.Forms.DataGridView();
-			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -199,6 +199,16 @@
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Chức năng";
 			// 
+			// button3
+			// 
+			this.button3.Location = new System.Drawing.Point(26, 381);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(146, 39);
+			this.button3.TabIndex = 0;
+			this.button3.Text = "Tìm kiếm";
+			this.button3.UseVisualStyleBackColor = true;
+			this.button3.Click += new System.EventHandler(this.btnNhapHang_Click);
+			// 
 			// btnNhapHang
 			// 
 			this.btnNhapHang.Location = new System.Drawing.Point(26, 205);
@@ -209,6 +219,16 @@
 			this.btnNhapHang.UseVisualStyleBackColor = true;
 			this.btnNhapHang.Click += new System.EventHandler(this.btnNhapHang_Click);
 			// 
+			// button2
+			// 
+			this.button2.Location = new System.Drawing.Point(26, 324);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(146, 39);
+			this.button2.TabIndex = 0;
+			this.button2.Text = "Hủy";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.btnSua_Click);
+			// 
 			// btnSua
 			// 
 			this.btnSua.Location = new System.Drawing.Point(26, 147);
@@ -218,6 +238,16 @@
 			this.btnSua.Text = "Sửa";
 			this.btnSua.UseVisualStyleBackColor = true;
 			this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(26, 264);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(146, 39);
+			this.button1.TabIndex = 0;
+			this.button1.Text = "Lưu";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.btnXoa_Click);
 			// 
 			// btnXoa
 			// 
@@ -249,36 +279,7 @@
 			this.dgvNhapHang.RowTemplate.Height = 24;
 			this.dgvNhapHang.Size = new System.Drawing.Size(1208, 319);
 			this.dgvNhapHang.TabIndex = 2;
-			// 
-			// button1
-			// 
-			this.button1.Location = new System.Drawing.Point(26, 264);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(146, 39);
-			this.button1.TabIndex = 0;
-			this.button1.Text = "Lưu";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.btnXoa_Click);
-			// 
-			// button2
-			// 
-			this.button2.Location = new System.Drawing.Point(26, 324);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(146, 39);
-			this.button2.TabIndex = 0;
-			this.button2.Text = "Hủy";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.btnSua_Click);
-			// 
-			// button3
-			// 
-			this.button3.Location = new System.Drawing.Point(26, 381);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(146, 39);
-			this.button3.TabIndex = 0;
-			this.button3.Text = "Tìm kiếm";
-			this.button3.UseVisualStyleBackColor = true;
-			this.button3.Click += new System.EventHandler(this.btnNhapHang_Click);
+			this.dgvNhapHang.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhapHang_CellContentDoubleClick);
 			// 
 			// FormNhapKho
 			// 
