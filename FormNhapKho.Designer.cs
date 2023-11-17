@@ -50,9 +50,11 @@
 			this.btnThem = new System.Windows.Forms.Button();
 			this.dgvNhapHang = new System.Windows.Forms.DataGridView();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.rdbMaHang = new System.Windows.Forms.RadioButton();
 			this.btnTimKiem = new System.Windows.Forms.Button();
 			this.txtTimKiem = new System.Windows.Forms.TextBox();
-			this.radioButton1 = new System.Windows.Forms.RadioButton();
+			this.rdbNgayNhap = new System.Windows.Forms.RadioButton();
+			this.rdbMaKho = new System.Windows.Forms.RadioButton();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -276,7 +278,9 @@
 			// 
 			// groupBox4
 			// 
-			this.groupBox4.Controls.Add(this.radioButton1);
+			this.groupBox4.Controls.Add(this.rdbMaKho);
+			this.groupBox4.Controls.Add(this.rdbNgayNhap);
+			this.groupBox4.Controls.Add(this.rdbMaHang);
 			this.groupBox4.Controls.Add(this.btnTimKiem);
 			this.groupBox4.Controls.Add(this.txtTimKiem);
 			this.groupBox4.Location = new System.Drawing.Point(123, 411);
@@ -284,6 +288,17 @@
 			this.groupBox4.Size = new System.Drawing.Size(1208, 88);
 			this.groupBox4.TabIndex = 3;
 			this.groupBox4.TabStop = false;
+			// 
+			// rdbMaHang
+			// 
+			this.rdbMaHang.AutoSize = true;
+			this.rdbMaHang.Location = new System.Drawing.Point(678, 39);
+			this.rdbMaHang.Name = "rdbMaHang";
+			this.rdbMaHang.Size = new System.Drawing.Size(83, 20);
+			this.rdbMaHang.TabIndex = 2;
+			this.rdbMaHang.TabStop = true;
+			this.rdbMaHang.Text = "Mã Hàng";
+			this.rdbMaHang.UseVisualStyleBackColor = true;
 			// 
 			// btnTimKiem
 			// 
@@ -303,16 +318,27 @@
 			this.txtTimKiem.Size = new System.Drawing.Size(438, 38);
 			this.txtTimKiem.TabIndex = 1;
 			// 
-			// radioButton1
+			// rdbNgayNhap
 			// 
-			this.radioButton1.AutoSize = true;
-			this.radioButton1.Location = new System.Drawing.Point(678, 39);
-			this.radioButton1.Name = "radioButton1";
-			this.radioButton1.Size = new System.Drawing.Size(103, 20);
-			this.radioButton1.TabIndex = 2;
-			this.radioButton1.TabStop = true;
-			this.radioButton1.Text = "radioButton1";
-			this.radioButton1.UseVisualStyleBackColor = true;
+			this.rdbNgayNhap.AutoSize = true;
+			this.rdbNgayNhap.Location = new System.Drawing.Point(814, 39);
+			this.rdbNgayNhap.Name = "rdbNgayNhap";
+			this.rdbNgayNhap.Size = new System.Drawing.Size(97, 20);
+			this.rdbNgayNhap.TabIndex = 2;
+			this.rdbNgayNhap.TabStop = true;
+			this.rdbNgayNhap.Text = "Ngày Nhập";
+			this.rdbNgayNhap.UseVisualStyleBackColor = true;
+			// 
+			// rdbMaKho
+			// 
+			this.rdbMaKho.AutoSize = true;
+			this.rdbMaKho.Location = new System.Drawing.Point(959, 39);
+			this.rdbMaKho.Name = "rdbMaKho";
+			this.rdbMaKho.Size = new System.Drawing.Size(73, 20);
+			this.rdbMaKho.TabIndex = 2;
+			this.rdbMaKho.TabStop = true;
+			this.rdbMaKho.Text = "Mã Kho";
+			this.rdbMaKho.UseVisualStyleBackColor = true;
 			// 
 			// FormNhapKho
 			// 
@@ -365,7 +391,9 @@
 		private System.Windows.Forms.GroupBox groupBox4;
 		private System.Windows.Forms.Button btnTimKiem;
 		private System.Windows.Forms.TextBox txtTimKiem;
-		private System.Windows.Forms.RadioButton radioButton1;
+		private System.Windows.Forms.RadioButton rdbMaHang;
+		private System.Windows.Forms.RadioButton rdbMaKho;
+		private System.Windows.Forms.RadioButton rdbNgayNhap;
 	}
 }
 
