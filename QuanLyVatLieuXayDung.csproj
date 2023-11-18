@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="AccountManager.cs" />
     <Compile Include="DatabaseConnector.cs" />
     <Compile Include="FormDangNhap.cs">
       <SubType>Form</SubType>

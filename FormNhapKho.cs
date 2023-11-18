@@ -14,7 +14,7 @@ namespace QuanLyVatLieuXayDung
     public partial class FormNhapKho : Form
     {
 		private readonly DatabaseConnector dbConnector;
-
+		private string maNV;
 		public FormNhapKho()
         {
             InitializeComponent();
@@ -33,6 +33,13 @@ namespace QuanLyVatLieuXayDung
 											JOIN NhanVien ON NhapKho.MaNhanVien = NhanVien.MaNhanVien";
 			dgvNhapHang.DataSource = dbConnector.ExecuteQuery(queryChiTietNhapKho);
 			LoadComboBoxData();
+			//Load dữ liệu cho tài khoản
+			Account currentAccount = AccountManager.Instance.CurrentAccount;
+			if (currentAccount != null)
+			{
+				lbTen.Text = currentAccount.name;
+				maNV = currentAccount.maNV;
+			}
 		}
 		private void LoadComboBoxData()
 		{
@@ -110,7 +117,7 @@ namespace QuanLyVatLieuXayDung
 			// Lấy mã kho và mã nhà cung cấp từ ComboBox
 			string maKho = ccbKho.SelectedValue.ToString();
 			string maNCC = ccbNhaCungCap.SelectedValue.ToString();
-
+			
 			// Lấy mã hóa đơn từ TextBox
 			string maHoaDon = txtMaHoaDon.Text.Trim();
 
@@ -126,8 +133,8 @@ namespace QuanLyVatLieuXayDung
 
 			// Thực hiện thêm dữ liệu vào database
 			string queryThem = $@"
-					INSERT INTO NhapKho (MaHoaDon, NgayNhap, MaNhaCungCap, MaKho)
-					VALUES ('{maHoaDon}', '{ngayNhap.ToString("yyyy-MM-dd")}', '{maNCC}', '{maKho}')";
+					INSERT INTO NhapKho (MaHoaDon, NgayNhap, MaNhaCungCap, MaKho, MaNhanVien)
+					VALUES ('{maHoaDon}', '{ngayNhap.ToString("yyyy-MM-dd")}', '{maNCC}', '{maKho}', '{maNV}')";
 
 			// Thực hiện thêm dữ liệu bằng DatabaseConnector
 			int rowsAffected = dbConnector.ExecuteNonQuery(queryThem);
@@ -201,7 +208,7 @@ namespace QuanLyVatLieuXayDung
 				if (dialogResult == DialogResult.Yes)
 				{
 					// Nếu người dùng đồng ý, thực hiện truy vấn UPDATE
-					string querySua = $"UPDATE NhapKho SET NgayNhap = '{ngayNhap:yyyy-MM-dd}', MaKho = '{maKho}', MaNhaCungCap = '{maNhaCungCap}' WHERE MaHoaDon = '{maHoaDon}'";
+					string querySua = $"UPDATE NhapKho SET NgayNhap = '{ngayNhap:yyyy-MM-dd}', MaKho = '{maKho}', MaNhaCungCap = '{maNhaCungCap}', MaNhanVien = '{maNV}' WHERE MaHoaDon = '{maHoaDon}'";
 
 					// Thực hiện truy vấn UPDATE
 					int rowsAffected = dbConnector.ExecuteNonQuery(querySua);
@@ -270,6 +277,5 @@ namespace QuanLyVatLieuXayDung
 			}
 		}
 
-		
 	}
 }

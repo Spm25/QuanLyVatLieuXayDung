@@ -61,5 +61,30 @@ namespace QuanLyVatLieuXayDung
 		{
 			connection.Dispose();
 		}
+		public Account CheckLogin(string userName, string password)
+		{
+			string query = $"SELECT * " +
+				$"FROM TaiKhoan tk join NhanVien nv on tk.MaNhanVien = nv.MaNhanVien " +
+				$"WHERE UserName = '{userName}' AND Password = '{password}'";
+			DataTable dataTable = ExecuteQuery(query);
+
+			if (dataTable.Rows.Count > 0)
+			{
+				DataRow row = dataTable.Rows[0];
+				Account account = new Account
+				{
+					userName = row["UserName"].ToString(),
+					password = row["Password"].ToString(),
+					phone = row["DienThoai"].ToString(),
+					name = row["TenNhanVien"].ToString(),
+					maNV = row["MaNhanVien"].ToString(),
+					isAdmin = Convert.ToBoolean(row["IsAdmin"])
+				};
+				return account;
+			}
+
+			return null; // Tài khoản không hợp lệ
+		}
+
 	}
 }

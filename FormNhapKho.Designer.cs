@@ -39,6 +39,7 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.lbTongTien = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
+			this.label7 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -50,11 +51,12 @@
 			this.btnThem = new System.Windows.Forms.Button();
 			this.dgvNhapHang = new System.Windows.Forms.DataGridView();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.rdbMaKho = new System.Windows.Forms.RadioButton();
+			this.rdbNgayNhap = new System.Windows.Forms.RadioButton();
 			this.rdbMaHang = new System.Windows.Forms.RadioButton();
 			this.btnTimKiem = new System.Windows.Forms.Button();
 			this.txtTimKiem = new System.Windows.Forms.TextBox();
-			this.rdbNgayNhap = new System.Windows.Forms.RadioButton();
-			this.rdbMaKho = new System.Windows.Forms.RadioButton();
+			this.lbTen = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -92,6 +94,8 @@
 			this.groupBox2.Controls.Add(this.label6);
 			this.groupBox2.Controls.Add(this.lbTongTien);
 			this.groupBox2.Controls.Add(this.label5);
+			this.groupBox2.Controls.Add(this.lbTen);
+			this.groupBox2.Controls.Add(this.label7);
 			this.groupBox2.Controls.Add(this.label4);
 			this.groupBox2.Controls.Add(this.label2);
 			this.groupBox2.Location = new System.Drawing.Point(6, 61);
@@ -169,6 +173,15 @@
 			this.label5.Size = new System.Drawing.Size(66, 16);
 			this.label5.TabIndex = 0;
 			this.label5.Text = "Tổng tiền:";
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(535, 222);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(70, 16);
+			this.label7.TabIndex = 0;
+			this.label7.Text = "Nhân viên:";
 			// 
 			// label4
 			// 
@@ -289,6 +302,28 @@
 			this.groupBox4.TabIndex = 3;
 			this.groupBox4.TabStop = false;
 			// 
+			// rdbMaKho
+			// 
+			this.rdbMaKho.AutoSize = true;
+			this.rdbMaKho.Location = new System.Drawing.Point(959, 39);
+			this.rdbMaKho.Name = "rdbMaKho";
+			this.rdbMaKho.Size = new System.Drawing.Size(73, 20);
+			this.rdbMaKho.TabIndex = 2;
+			this.rdbMaKho.TabStop = true;
+			this.rdbMaKho.Text = "Mã Kho";
+			this.rdbMaKho.UseVisualStyleBackColor = true;
+			// 
+			// rdbNgayNhap
+			// 
+			this.rdbNgayNhap.AutoSize = true;
+			this.rdbNgayNhap.Location = new System.Drawing.Point(814, 39);
+			this.rdbNgayNhap.Name = "rdbNgayNhap";
+			this.rdbNgayNhap.Size = new System.Drawing.Size(97, 20);
+			this.rdbNgayNhap.TabIndex = 2;
+			this.rdbNgayNhap.TabStop = true;
+			this.rdbNgayNhap.Text = "Ngày Nhập";
+			this.rdbNgayNhap.UseVisualStyleBackColor = true;
+			// 
 			// rdbMaHang
 			// 
 			this.rdbMaHang.AutoSize = true;
@@ -318,27 +353,14 @@
 			this.txtTimKiem.Size = new System.Drawing.Size(438, 38);
 			this.txtTimKiem.TabIndex = 1;
 			// 
-			// rdbNgayNhap
+			// lbTen
 			// 
-			this.rdbNgayNhap.AutoSize = true;
-			this.rdbNgayNhap.Location = new System.Drawing.Point(814, 39);
-			this.rdbNgayNhap.Name = "rdbNgayNhap";
-			this.rdbNgayNhap.Size = new System.Drawing.Size(97, 20);
-			this.rdbNgayNhap.TabIndex = 2;
-			this.rdbNgayNhap.TabStop = true;
-			this.rdbNgayNhap.Text = "Ngày Nhập";
-			this.rdbNgayNhap.UseVisualStyleBackColor = true;
-			// 
-			// rdbMaKho
-			// 
-			this.rdbMaKho.AutoSize = true;
-			this.rdbMaKho.Location = new System.Drawing.Point(959, 39);
-			this.rdbMaKho.Name = "rdbMaKho";
-			this.rdbMaKho.Size = new System.Drawing.Size(73, 20);
-			this.rdbMaKho.TabIndex = 2;
-			this.rdbMaKho.TabStop = true;
-			this.rdbMaKho.Text = "Mã Kho";
-			this.rdbMaKho.UseVisualStyleBackColor = true;
+			this.lbTen.AutoSize = true;
+			this.lbTen.Location = new System.Drawing.Point(651, 222);
+			this.lbTen.Name = "lbTen";
+			this.lbTen.Size = new System.Drawing.Size(31, 16);
+			this.lbTen.TabIndex = 0;
+			this.lbTen.Text = "Tên";
 			// 
 			// FormNhapKho
 			// 
@@ -394,6 +416,8 @@
 		private System.Windows.Forms.RadioButton rdbMaHang;
 		private System.Windows.Forms.RadioButton rdbMaKho;
 		private System.Windows.Forms.RadioButton rdbNgayNhap;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Label lbTen;
 	}
 }
 

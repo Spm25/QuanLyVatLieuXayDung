@@ -12,6 +12,8 @@ namespace QuanLyVatLieuXayDung
 		public string userName { get; set; }
 		public string password { get; set; }
 		public string phone { get; set; }
+		public string name { get; set; }
+		public string maNV { get; set; }
 		public bool isAdmin { get; set; }
 	}
 }

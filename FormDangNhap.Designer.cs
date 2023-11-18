@@ -52,7 +52,7 @@
 			this.txtUserName.Location = new System.Drawing.Point(304, 112);
 			this.txtUserName.Name = "txtUserName";
 			this.txtUserName.Size = new System.Drawing.Size(249, 22);
-			this.txtUserName.TabIndex = 1;
+			this.txtUserName.TabIndex = 0;
 			// 
 			// btnDangNhap
 			// 
@@ -62,6 +62,7 @@
 			this.btnDangNhap.TabIndex = 2;
 			this.btnDangNhap.Text = "Đăng nhập";
 			this.btnDangNhap.UseVisualStyleBackColor = true;
+			this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
 			// 
 			// label2
 			// 
@@ -85,6 +86,7 @@
 			// 
 			this.txtPassword.Location = new System.Drawing.Point(304, 156);
 			this.txtPassword.Name = "txtPassword";
+			this.txtPassword.PasswordChar = '*';
 			this.txtPassword.Size = new System.Drawing.Size(249, 22);
 			this.txtPassword.TabIndex = 1;
 			// 
@@ -93,9 +95,10 @@
 			this.btnThoat.Location = new System.Drawing.Point(375, 231);
 			this.btnThoat.Name = "btnThoat";
 			this.btnThoat.Size = new System.Drawing.Size(95, 35);
-			this.btnThoat.TabIndex = 2;
+			this.btnThoat.TabIndex = 3;
 			this.btnThoat.Text = "Thoát";
 			this.btnThoat.UseVisualStyleBackColor = true;
+			this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
 			// 
 			// FormDangNhap
 			// 
@@ -111,6 +114,7 @@
 			this.Controls.Add(this.label1);
 			this.Name = "FormDangNhap";
 			this.Text = "FormDangNhap";
+			this.Load += new System.EventHandler(this.FormDangNhap_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
