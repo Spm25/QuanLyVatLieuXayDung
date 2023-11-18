@@ -16,16 +16,17 @@ namespace QuanLyVatLieuXayDung
 		{
 			InitializeComponent();
 		}
+		private void FormDangNhap_Load(object sender, EventArgs e)
+		{
+
+		}
 
 		private void btnThoat_Click(object sender, EventArgs e)
 		{
 			Application.Exit();
 		}
 
-		private void FormDangNhap_Load(object sender, EventArgs e)
-		{
-		}
-
+		
 		private void btnDangNhap_Click(object sender, EventArgs e)
 		{
 			string userName = txtUserName.Text;

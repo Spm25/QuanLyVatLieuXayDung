@@ -98,6 +98,7 @@
     <Content Include="Images\edit.png" />
     <Content Include="Images\add.png" />
     <Content Include="Images\delete.png" />
+    <None Include="Images\login.png" />
     <Content Include="Images\product.png" />
     <Content Include="Images\report.png" />
     <Content Include="Images\warehouse.png" />

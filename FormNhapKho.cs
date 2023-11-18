@@ -15,6 +15,7 @@ namespace QuanLyVatLieuXayDung
     {
 		private readonly DatabaseConnector dbConnector;
 		private string maNV;
+		private DataTable dataTable;
 		public FormNhapKho()
         {
             InitializeComponent();
@@ -110,6 +111,8 @@ namespace QuanLyVatLieuXayDung
 
 			ccbKho.Text = "";
 			ccbNhaCungCap.Text = "";
+
+			rdbMaHang.Checked = true;
 		}
 		private void FormNhapKho_FormClosing(object sender, FormClosingEventArgs e)
 		{
@@ -139,10 +142,12 @@ namespace QuanLyVatLieuXayDung
 				return;
 			}
 
+			int tongTien = int.Parse(lbTongTien.Text);
+
 			// Thực hiện thêm dữ liệu vào database
 			string queryThem = $@"
-					INSERT INTO NhapKho (MaHoaDon, NgayNhap, MaNhaCungCap, MaKho, MaNhanVien)
-					VALUES ('{maHoaDon}', '{ngayNhap.ToString("yyyy-MM-dd")}', '{maNCC}', '{maKho}', '{maNV}')";
+								INSERT INTO NhapKho (MaHoaDon, NgayNhap, MaNhaCungCap, MaKho, MaNhanVien)
+								VALUES ('{maHoaDon}', '{ngayNhap.ToString("yyyy-MM-dd")}', '{maNCC}', '{maKho}', '{maNV}')";
 
 			// Thực hiện thêm dữ liệu bằng DatabaseConnector
 			int rowsAffected = dbConnector.ExecuteNonQuery(queryThem);
@@ -189,7 +194,7 @@ namespace QuanLyVatLieuXayDung
 						MessageBox.Show("Xóa thành công.");
 
 						// Sau khi xóa, làm mới DataGridView và các controls khác
-						//RefreshData();
+						RefreshData();
 					}
 					else
 					{
@@ -288,5 +293,43 @@ namespace QuanLyVatLieuXayDung
 			}
 		}
 
+		private void dgvNhapHang_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		{
+			// Kiểm tra xem có dòng nào được chọn hay không
+			if (e.RowIndex >= 0)
+			{
+				// Lấy dữ liệu từ cell của dòng được chọn
+				DataGridViewRow selectedRow = dgvNhapHang.Rows[e.RowIndex];
+
+				// Đưa dữ liệu vào các TextBox và ComboBox
+				txtMaHoaDon.Text = selectedRow.Cells["MaHoaDon"].Value.ToString();
+
+				// Lấy giá trị của cột MaKho từ cell
+				string tenKho = selectedRow.Cells["TenKho"].Value.ToString();
+
+				// Set giá trị của ComboBox Kho
+				ccbKho.Text = tenKho;
+
+				// Lấy giá trị của cột MaNhaCungCap từ cell
+				string tenNhaCungCap = selectedRow.Cells["TenNhaCungCap"].Value.ToString();
+
+				// Set giá trị của ComboBox Nhà cung cấp
+				ccbNhaCungCap.Text = tenNhaCungCap;
+
+				string ngayNhapString = selectedRow.Cells["NgayNhap"].Value.ToString();
+				DateTime ngayNhap;
+
+				if (DateTime.TryParse(ngayNhapString, out ngayNhap))
+				{
+					// Chuyển đổi thành công, đặt giá trị vào datNgayNhap
+					datNgayNhap.Value = ngayNhap;
+				}
+				else
+				{
+					// Xử lý trường hợp không chuyển đổi được giá trị sang kiểu DateTime
+					MessageBox.Show("Không thể chuyển đổi giá trị NgayNhap sang kiểu DateTime.");
+				}
+			}
+		}
 	}
 }

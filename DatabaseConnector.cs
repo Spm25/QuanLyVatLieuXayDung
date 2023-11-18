@@ -85,6 +85,31 @@ namespace QuanLyVatLieuXayDung
 
 			return null; // Tài khoản không hợp lệ
 		}
+		public void UpdateDataTable(DataTable dataTable, string tableName)
+		{
+			using (SqlConnection con = new SqlConnection(connectionString))
+			{
+				con.Open();
 
+				// Tạo một SqlDataAdapter để làm trung gian giữa DataTable và cơ sở dữ liệu
+				using (SqlDataAdapter dataAdapter = new SqlDataAdapter($"SELECT * FROM {tableName}", con))
+				{
+					// Tạo một SqlCommandBuilder để tự động tạo các lệnh update, delete và insert
+					using (SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter))
+					{
+						// Cập nhật chỉ các hàng đã thay đổi
+						dataAdapter.Update(dataTable.Select(null, null, DataViewRowState.Added | DataViewRowState.ModifiedCurrent));
+
+						// Xóa các hàng bị đánh dấu để xóa
+						foreach (DataRow row in dataTable.Select(null, null, DataViewRowState.Deleted))
+						{
+							row.RejectChanges();
+							dataAdapter.DeleteCommand = commandBuilder.GetDeleteCommand();
+							dataAdapter.Update(new DataRow[] { row });
+						}
+					}
+				}
+			}
+		}
 	}
 }
