@@ -39,16 +39,12 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.lbTongTien = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
+			this.lbTen = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.btnNhapHang = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.btnSua = new System.Windows.Forms.Button();
-			this.button1 = new System.Windows.Forms.Button();
-			this.btnXoa = new System.Windows.Forms.Button();
-			this.btnThem = new System.Windows.Forms.Button();
 			this.dgvNhapHang = new System.Windows.Forms.DataGridView();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.rdbMaKho = new System.Windows.Forms.RadioButton();
@@ -56,7 +52,11 @@
 			this.rdbMaHang = new System.Windows.Forms.RadioButton();
 			this.btnTimKiem = new System.Windows.Forms.Button();
 			this.txtTimKiem = new System.Windows.Forms.TextBox();
-			this.lbTen = new System.Windows.Forms.Label();
+			this.button2 = new System.Windows.Forms.Button();
+			this.btnSua = new System.Windows.Forms.Button();
+			this.button1 = new System.Windows.Forms.Button();
+			this.btnXoa = new System.Windows.Forms.Button();
+			this.btnThem = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -174,6 +174,15 @@
 			this.label5.TabIndex = 0;
 			this.label5.Text = "Tổng tiền:";
 			// 
+			// lbTen
+			// 
+			this.lbTen.AutoSize = true;
+			this.lbTen.Location = new System.Drawing.Point(651, 222);
+			this.lbTen.Name = "lbTen";
+			this.lbTen.Size = new System.Drawing.Size(31, 16);
+			this.lbTen.TabIndex = 0;
+			this.lbTen.Text = "Tên";
+			// 
 			// label7
 			// 
 			this.label7.AutoSize = true;
@@ -219,63 +228,14 @@
 			// 
 			// btnNhapHang
 			// 
-			this.btnNhapHang.Location = new System.Drawing.Point(29, 204);
+			this.btnNhapHang.Font = new System.Drawing.Font("Roboto Slab", 12F);
+			this.btnNhapHang.Location = new System.Drawing.Point(19, 196);
 			this.btnNhapHang.Name = "btnNhapHang";
-			this.btnNhapHang.Size = new System.Drawing.Size(146, 39);
+			this.btnNhapHang.Size = new System.Drawing.Size(158, 43);
 			this.btnNhapHang.TabIndex = 0;
 			this.btnNhapHang.Text = "Nhập hàng";
 			this.btnNhapHang.UseVisualStyleBackColor = true;
 			this.btnNhapHang.Click += new System.EventHandler(this.btnNhapHang_Click);
-			// 
-			// button2
-			// 
-			this.button2.Location = new System.Drawing.Point(29, 323);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(146, 39);
-			this.button2.TabIndex = 0;
-			this.button2.Text = "Hủy";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.btnSua_Click);
-			// 
-			// btnSua
-			// 
-			this.btnSua.Location = new System.Drawing.Point(29, 146);
-			this.btnSua.Name = "btnSua";
-			this.btnSua.Size = new System.Drawing.Size(146, 39);
-			this.btnSua.TabIndex = 0;
-			this.btnSua.Text = "Sửa";
-			this.btnSua.UseVisualStyleBackColor = true;
-			this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-			// 
-			// button1
-			// 
-			this.button1.Location = new System.Drawing.Point(29, 263);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(146, 39);
-			this.button1.TabIndex = 0;
-			this.button1.Text = "Lưu";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.btnXoa_Click);
-			// 
-			// btnXoa
-			// 
-			this.btnXoa.Location = new System.Drawing.Point(29, 93);
-			this.btnXoa.Name = "btnXoa";
-			this.btnXoa.Size = new System.Drawing.Size(146, 39);
-			this.btnXoa.TabIndex = 0;
-			this.btnXoa.Text = "Xóa";
-			this.btnXoa.UseVisualStyleBackColor = true;
-			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-			// 
-			// btnThem
-			// 
-			this.btnThem.Location = new System.Drawing.Point(29, 40);
-			this.btnThem.Name = "btnThem";
-			this.btnThem.Size = new System.Drawing.Size(146, 39);
-			this.btnThem.TabIndex = 0;
-			this.btnThem.Text = "Thêm";
-			this.btnThem.UseVisualStyleBackColor = true;
-			this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
 			// 
 			// dgvNhapHang
 			// 
@@ -353,14 +313,68 @@
 			this.txtTimKiem.Size = new System.Drawing.Size(438, 38);
 			this.txtTimKiem.TabIndex = 1;
 			// 
-			// lbTen
+			// button2
 			// 
-			this.lbTen.AutoSize = true;
-			this.lbTen.Location = new System.Drawing.Point(651, 222);
-			this.lbTen.Name = "lbTen";
-			this.lbTen.Size = new System.Drawing.Size(31, 16);
-			this.lbTen.TabIndex = 0;
-			this.lbTen.Text = "Tên";
+			this.button2.Font = new System.Drawing.Font("Roboto Slab", 12F);
+			this.button2.Image = global::QuanLyVatLieuXayDung.Properties.Resources.cancel;
+			this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.button2.Location = new System.Drawing.Point(19, 315);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(158, 43);
+			this.button2.TabIndex = 0;
+			this.button2.Text = "Hủy";
+			this.button2.UseVisualStyleBackColor = true;
+			// 
+			// btnSua
+			// 
+			this.btnSua.Font = new System.Drawing.Font("Roboto Slab", 12F);
+			this.btnSua.Image = global::QuanLyVatLieuXayDung.Properties.Resources.edit;
+			this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnSua.Location = new System.Drawing.Point(19, 138);
+			this.btnSua.Name = "btnSua";
+			this.btnSua.Size = new System.Drawing.Size(158, 43);
+			this.btnSua.TabIndex = 0;
+			this.btnSua.Text = "Sửa";
+			this.btnSua.UseVisualStyleBackColor = true;
+			this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+			// 
+			// button1
+			// 
+			this.button1.Font = new System.Drawing.Font("Roboto Slab", 12F);
+			this.button1.Image = global::QuanLyVatLieuXayDung.Properties.Resources.check;
+			this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.button1.Location = new System.Drawing.Point(19, 255);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(158, 43);
+			this.button1.TabIndex = 0;
+			this.button1.Text = "Lưu";
+			this.button1.UseVisualStyleBackColor = true;
+			// 
+			// btnXoa
+			// 
+			this.btnXoa.Font = new System.Drawing.Font("Roboto Slab", 12F);
+			this.btnXoa.Image = global::QuanLyVatLieuXayDung.Properties.Resources.delete;
+			this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnXoa.Location = new System.Drawing.Point(19, 85);
+			this.btnXoa.Name = "btnXoa";
+			this.btnXoa.Size = new System.Drawing.Size(158, 43);
+			this.btnXoa.TabIndex = 0;
+			this.btnXoa.Text = "Xóa";
+			this.btnXoa.UseVisualStyleBackColor = true;
+			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+			// 
+			// btnThem
+			// 
+			this.btnThem.Font = new System.Drawing.Font("Roboto Slab", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnThem.Image = global::QuanLyVatLieuXayDung.Properties.Resources.add;
+			this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnThem.Location = new System.Drawing.Point(19, 32);
+			this.btnThem.Name = "btnThem";
+			this.btnThem.Size = new System.Drawing.Size(158, 43);
+			this.btnThem.TabIndex = 0;
+			this.btnThem.Text = "Thêm";
+			this.btnThem.UseVisualStyleBackColor = true;
+			this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
 			// 
 			// FormNhapKho
 			// 

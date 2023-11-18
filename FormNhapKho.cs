@@ -24,14 +24,8 @@ namespace QuanLyVatLieuXayDung
 		private void FormNhapKho_Load(object sender, EventArgs e)
 		{
 			// Load dữ liệu cho DataGridView
-			string queryChiTietNhapKho = @"
-											SELECT NhapKho.MaHoaDon, NhapKho.NgayNhap, NhapKho.TongTien,
-												   KhoHang.TenKho, NhaCungCap.TenNhaCungCap, NhanVien.TenNhanVien
-											FROM NhapKho
-											JOIN KhoHang ON NhapKho.MaKho = KhoHang.MaKho
-											JOIN NhaCungCap ON NhapKho.MaNhaCungCap = NhaCungCap.MaNhaCungCap
-											JOIN NhanVien ON NhapKho.MaNhanVien = NhanVien.MaNhanVien";
-			dgvNhapHang.DataSource = dbConnector.ExecuteQuery(queryChiTietNhapKho);
+			LoadDataGridView();
+			// Load dữ liệu cho Combo Box
 			LoadComboBoxData();
 			//Load dữ liệu cho tài khoản
 			Account currentAccount = AccountManager.Instance.CurrentAccount;
@@ -40,27 +34,6 @@ namespace QuanLyVatLieuXayDung
 				lbTen.Text = currentAccount.name;
 				maNV = currentAccount.maNV;
 			}
-		}
-		private void LoadComboBoxData()
-		{
-			// Load dữ liệu cho ComboBox Kho
-			string queryKho = "SELECT MaKho, TenKho FROM KhoHang";
-			ccbKho.DataSource = dbConnector.ExecuteQuery(queryKho);
-			ccbKho.DisplayMember = "TenKho";
-			ccbKho.ValueMember = "MaKho";
-
-			// Load dữ liệu cho ComboBox Nhà cung cấp
-			string queryNhaCungCap = "SELECT MaNhaCungCap, TenNhaCungCap FROM NhaCungCap";
-			ccbNhaCungCap.DataSource = dbConnector.ExecuteQuery(queryNhaCungCap);
-			ccbNhaCungCap.DisplayMember = "TenNhaCungCap";
-			ccbNhaCungCap.ValueMember = "MaNhaCungCap";
-
-			ccbKho.Text = "";
-			ccbNhaCungCap.Text = "";
-		}
-		private void FormNhapKho_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			dbConnector.Dispose();
 		}
 		private bool KiemTraDuLieuNhap()
 		{
@@ -95,18 +68,53 @@ namespace QuanLyVatLieuXayDung
 			// Nếu tất cả kiểm tra đều thành công
 			return true;
 		}
-		//private void RefreshData()
-		//{
-		//	// Làm mới DataGridView
-		//	LoadDataGridView();
+		private void RefreshData()
+		{
+			// Làm mới DataGridView
+			LoadDataGridView();
 
-		//	// Làm mới các controls khác
-		//	// ...
+			// Làm mới các controls khác
+			// ...
 
-		//	// Xóa các dữ liệu đang hiển thị trong TextBox và các controls khác
-		//	txtMaHoaDon.Text = "";
-		//	// ...
-		//}
+			// Xóa các dữ liệu đang hiển thị trong TextBox và các controls khác
+			txtMaHoaDon.Text = "";
+			datNgayNhap.Text = "";
+			ccbKho.SelectedIndex = 0;
+			ccbNhaCungCap.SelectedIndex = 0;
+			lbTongTien.Text = "0đ";
+		}
+		private void LoadDataGridView()
+		{
+			string queryChiTietNhapKho = @"
+											SELECT NhapKho.MaHoaDon, NhapKho.NgayNhap, NhapKho.TongTien,
+												   KhoHang.TenKho, NhaCungCap.TenNhaCungCap, NhanVien.TenNhanVien
+											FROM NhapKho
+											JOIN KhoHang ON NhapKho.MaKho = KhoHang.MaKho
+											JOIN NhaCungCap ON NhapKho.MaNhaCungCap = NhaCungCap.MaNhaCungCap
+											JOIN NhanVien ON NhapKho.MaNhanVien = NhanVien.MaNhanVien";
+			dgvNhapHang.DataSource = dbConnector.ExecuteQuery(queryChiTietNhapKho);
+		}
+		private void LoadComboBoxData()
+		{
+			// Load dữ liệu cho ComboBox Kho
+			string queryKho = "SELECT MaKho, TenKho FROM KhoHang";
+			ccbKho.DataSource = dbConnector.ExecuteQuery(queryKho);
+			ccbKho.DisplayMember = "TenKho";
+			ccbKho.ValueMember = "MaKho";
+
+			// Load dữ liệu cho ComboBox Nhà cung cấp
+			string queryNhaCungCap = "SELECT MaNhaCungCap, TenNhaCungCap FROM NhaCungCap";
+			ccbNhaCungCap.DataSource = dbConnector.ExecuteQuery(queryNhaCungCap);
+			ccbNhaCungCap.DisplayMember = "TenNhaCungCap";
+			ccbNhaCungCap.ValueMember = "MaNhaCungCap";
+
+			ccbKho.Text = "";
+			ccbNhaCungCap.Text = "";
+		}
+		private void FormNhapKho_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			dbConnector.Dispose();
+		}
 		private void btnThem_Click(object sender, EventArgs e)
 		{
 			// Kiểm tra dữ liệu nhập
@@ -144,6 +152,9 @@ namespace QuanLyVatLieuXayDung
 			{
 				// Thông báo thành công hoặc thực hiện các hành động cần thiết
 				MessageBox.Show("Thêm dữ liệu thành công");
+
+				// Cập nhật DataGridView hoặc thực hiện các hành động cần thiết khác
+				RefreshData();
 			}
 			else
 			{
@@ -151,7 +162,7 @@ namespace QuanLyVatLieuXayDung
 				MessageBox.Show("Không thể thêm dữ liệu");
 			}
 
-			// Cập nhật DataGridView hoặc thực hiện các hành động cần thiết khác
+			
 		}
 
 		private void btnXoa_Click(object sender, EventArgs e)
@@ -219,7 +230,7 @@ namespace QuanLyVatLieuXayDung
 						MessageBox.Show("Cập nhật thành công.");
 
 						// Sau khi cập nhật, làm mới DataGridView và các controls khác
-						//RefreshData();
+						RefreshData();
 					}
 					else
 					{
