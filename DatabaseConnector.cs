@@ -104,7 +104,7 @@ namespace QuanLyVatLieuXayDung
 						DataRow[] deletedRows = dataTable.Select(null, null, DataViewRowState.Deleted);
 						foreach (DataRow row in deletedRows)
 						{
-							row.RejectChanges();
+							//row.RejectChanges();
 							dataAdapter.DeleteCommand = commandBuilder.GetDeleteCommand();
 							dataAdapter.Update(new DataRow[] { row });
 						}

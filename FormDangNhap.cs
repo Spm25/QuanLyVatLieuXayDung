@@ -16,10 +16,6 @@ namespace QuanLyVatLieuXayDung
 		{
 			InitializeComponent();
 		}
-		private void FormDangNhap_Load(object sender, EventArgs e)
-		{
-
-		}
 
 		private void btnThoat_Click(object sender, EventArgs e)
 		{

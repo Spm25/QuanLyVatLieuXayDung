@@ -81,7 +81,7 @@ namespace QuanLyVatLieuXayDung
 			txtMaHoaDon.Text = "";
 			ccbKho.SelectedIndex = -1;
 			ccbNhaCungCap.SelectedIndex = -1;
-			lbTongTien.Text = "0đ";
+			lbTongTien.Text = "0";
 		}
 		private void LoadDataTable()
 		{
@@ -124,7 +124,7 @@ namespace QuanLyVatLieuXayDung
 			DateTime ngayNhap = datNgayNhap.Value;
 			string maKho = ccbKho.SelectedValue.ToString();
 			string maNCC = ccbNhaCungCap.SelectedValue.ToString();
-			int tongTien = 0; // Giả sử ban đầu là 0
+			int.TryParse(lbTongTien.Text, out int tongTien); 
 
 			DataRow[] existingRows = dataTable.Select($"MaHoaDon = '{maHoaDon}'");
 			if (existingRows.Length > 0)
@@ -160,8 +160,8 @@ namespace QuanLyVatLieuXayDung
 
 				if (rowToDelete != null)
 				{
-					// Xóa dòng khỏi DataTable
-					dataTable.Rows.Remove(rowToDelete);
+					// Đánh dấu dòng để xóa
+					rowToDelete.Delete();
 
 					// Làm mới các controls
 					RefreshData();
@@ -209,40 +209,18 @@ namespace QuanLyVatLieuXayDung
 
 		private void btnNhapHang_Click(object sender, EventArgs e)
 		{
-			string tuKhoa = txtTimKiem.Text;
-			string loaiTimKiem = "";
-
-			if (rdbMaHang.Checked)
+			if (!KiemTraDuLieuNhap())
 			{
-				loaiTimKiem = "MaHang";
-			}
-			else if (rdbNgayNhap.Checked)
-			{
-				loaiTimKiem = "NgayNhap";
-			}
-			else if (rdbMaKho.Checked)
-			{
-				loaiTimKiem = "MaKho";
+				return;
 			}
 
-			string query = "";
-			switch (loaiTimKiem)
-			{
-				case "MaHang":
-					query = $"SELECT * FROM NhapKho WHERE MaHoaDon LIKE '%{tuKhoa}%'";
-					break;
-				case "NgayNhap":
-					query = $"SELECT * FROM NhapKho WHERE NgayNhap LIKE '%{tuKhoa}%'";
-					break;
-				case "MaKho":
-					query = $"SELECT * FROM NhapKho WHERE MaKho LIKE '%{tuKhoa}%'";
-					break;
-					// Thêm các trường hợp khác tùy theo nhu cầu
-			}
-
-			dgvNhapHang.DataSource = dbConnector.ExecuteQuery(query);
-
-			// Hiển thị kết quả tìm kiếm trên DataGridView hoặc các controls khác tùy vào thiết kế giao diện của bạn
+			FormChiTietNhapKho formChiTietNhapKho = new FormChiTietNhapKho(txtMaHoaDon.Text,
+																			datNgayNhap.Text,
+																			ccbNhaCungCap.Text,
+																			ccbKho.Text, 
+																			lbTongTien.Text, 
+																			lbTen.Text);
+			formChiTietNhapKho.ShowDialog();
 		}
 
 		private void dgvNhapHang_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -269,6 +247,9 @@ namespace QuanLyVatLieuXayDung
 				ccbNhaCungCap.SelectedValue = maNhaCungCap;
 
 				string ngayNhapString = selectedRow.Cells["NgayNhap"].Value.ToString();
+
+				lbTongTien.Text = selectedRow.Cells["TongTien"].Value.ToString();
+
 				DateTime ngayNhap;
 
 				if (DateTime.TryParse(ngayNhapString, out ngayNhap))
@@ -301,5 +282,41 @@ namespace QuanLyVatLieuXayDung
 		{
 			LoadDataTable();
 		}
+
+		private void btnTimKiem_Click(object sender, EventArgs e)
+		{
+			string tuKhoa = txtTimKiem.Text;
+			string loaiTimKiem = "";
+
+			if (rdbMaHang.Checked)
+			{
+				loaiTimKiem = "MaHang";
+			}
+			else if (rdbNgayNhap.Checked)
+			{
+				loaiTimKiem = "NgayNhap";
+			}
+			else if (rdbMaKho.Checked)
+			{
+				loaiTimKiem = "MaKho";
+			}
+
+			string query = "";
+			switch (loaiTimKiem)
+			{
+				case "MaHang":
+					query = $"SELECT * FROM NhapKho WHERE MaHoaDon LIKE '%{tuKhoa}%'";
+					break;
+				case "NgayNhap":
+					query = $"SELECT * FROM NhapKho WHERE NgayNhap LIKE '%{tuKhoa}%'";
+					break;
+				case "MaKho":
+					query = $"SELECT * FROM NhapKho WHERE MaKho LIKE '%{tuKhoa}%'";
+					break;
+					// Thêm các trường hợp khác tùy theo nhu cầu
+			}
+
+			dgvNhapHang.DataSource = dbConnector.ExecuteQuery(query);
+		}		
 	}
 }
