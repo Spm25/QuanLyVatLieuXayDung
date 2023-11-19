@@ -112,7 +112,7 @@
 			this.datNgayNhap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.datNgayNhap.Location = new System.Drawing.Point(681, 71);
 			this.datNgayNhap.Name = "datNgayNhap";
-			this.datNgayNhap.Size = new System.Drawing.Size(143, 27);
+			this.datNgayNhap.Size = new System.Drawing.Size(166, 27);
 			this.datNgayNhap.TabIndex = 3;
 			this.datNgayNhap.Value = new System.DateTime(2023, 1, 12, 0, 0, 0, 0);
 			// 
@@ -121,7 +121,7 @@
 			this.ccbKho.FormattingEnabled = true;
 			this.ccbKho.Location = new System.Drawing.Point(681, 155);
 			this.ccbKho.Name = "ccbKho";
-			this.ccbKho.Size = new System.Drawing.Size(121, 28);
+			this.ccbKho.Size = new System.Drawing.Size(105, 28);
 			this.ccbKho.TabIndex = 2;
 			// 
 			// ccbNhaCungCap
@@ -257,6 +257,7 @@
 			this.btnHuy.TabIndex = 0;
 			this.btnHuy.Text = "Hủy";
 			this.btnHuy.UseVisualStyleBackColor = true;
+			this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
 			// 
 			// btnSua
 			// 
@@ -282,6 +283,7 @@
 			this.btnLuu.TabIndex = 0;
 			this.btnLuu.Text = "Lưu";
 			this.btnLuu.UseVisualStyleBackColor = true;
+			this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
 			// 
 			// btnXoa
 			// 
@@ -319,7 +321,6 @@
 			this.dgvNhapHang.RowTemplate.Height = 24;
 			this.dgvNhapHang.Size = new System.Drawing.Size(1208, 319);
 			this.dgvNhapHang.TabIndex = 2;
-			this.dgvNhapHang.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhapHang_CellContentDoubleClick);
 			this.dgvNhapHang.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhapHang_CellDoubleClick);
 			// 
 			// groupBox4

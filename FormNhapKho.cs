@@ -25,7 +25,7 @@ namespace QuanLyVatLieuXayDung
 		private void FormNhapKho_Load(object sender, EventArgs e)
 		{
 			// Load dữ liệu cho DataGridView
-			LoadDataGridView();
+			LoadDataTable();
 			// Load dữ liệu cho Combo Box
 			LoadComboBoxData();
 			//Load dữ liệu cho tài khoản
@@ -72,28 +72,22 @@ namespace QuanLyVatLieuXayDung
 		private void RefreshData()
 		{
 			// Làm mới DataGridView
-			LoadDataGridView();
+			dgvNhapHang.DataSource = dataTable;
 
 			// Làm mới các controls khác
 			// ...
 
 			// Xóa các dữ liệu đang hiển thị trong TextBox và các controls khác
 			txtMaHoaDon.Text = "";
-			datNgayNhap.Text = "";
-			ccbKho.SelectedIndex = 0;
-			ccbNhaCungCap.SelectedIndex = 0;
+			ccbKho.SelectedIndex = -1;
+			ccbNhaCungCap.SelectedIndex = -1;
 			lbTongTien.Text = "0đ";
 		}
-		private void LoadDataGridView()
+		private void LoadDataTable()
 		{
-			string queryChiTietNhapKho = @"
-											SELECT NhapKho.MaHoaDon, NhapKho.NgayNhap, NhapKho.TongTien,
-												   KhoHang.TenKho, NhaCungCap.TenNhaCungCap, NhanVien.TenNhanVien
-											FROM NhapKho
-											JOIN KhoHang ON NhapKho.MaKho = KhoHang.MaKho
-											JOIN NhaCungCap ON NhapKho.MaNhaCungCap = NhaCungCap.MaNhaCungCap
-											JOIN NhanVien ON NhapKho.MaNhanVien = NhanVien.MaNhanVien";
-			dgvNhapHang.DataSource = dbConnector.ExecuteQuery(queryChiTietNhapKho);
+			string queryChiTietNhapKho = @"SELECT * FROM NhapKho";
+			dataTable = dbConnector.ExecuteQuery(queryChiTietNhapKho);
+			dgvNhapHang.DataSource = dataTable;
 		}
 		private void LoadComboBoxData()
 		{
@@ -120,86 +114,61 @@ namespace QuanLyVatLieuXayDung
 		}
 		private void btnThem_Click(object sender, EventArgs e)
 		{
-			// Kiểm tra dữ liệu nhập
 			if (!KiemTraDuLieuNhap())
 			{
 				return;
 			}
-			// Lấy mã kho và mã nhà cung cấp từ ComboBox
+
+			// Lấy dữ liệu từ các controls
+			string maHoaDon = txtMaHoaDon.Text.Trim();
+			DateTime ngayNhap = datNgayNhap.Value;
 			string maKho = ccbKho.SelectedValue.ToString();
 			string maNCC = ccbNhaCungCap.SelectedValue.ToString();
-			
-			// Lấy mã hóa đơn từ TextBox
-			string maHoaDon = txtMaHoaDon.Text.Trim();
+			int tongTien = 0; // Giả sử ban đầu là 0
 
-			// Lấy ngày nhập từ DateTimePicker
-			DateTime ngayNhap = datNgayNhap.Value;
-
-			// Kiểm tra các giá trị cần thiết trước khi thêm vào database
-			if (string.IsNullOrEmpty(maHoaDon))
+			DataRow[] existingRows = dataTable.Select($"MaHoaDon = '{maHoaDon}'");
+			if (existingRows.Length > 0)
 			{
-				MessageBox.Show("Vui lòng nhập mã hóa đơn");
+				MessageBox.Show("Mã hóa đơn đã tồn tại. Vui lòng chọn một mã hóa đơn khác.");
 				return;
 			}
 
-			int tongTien = int.Parse(lbTongTien.Text);
+			// Thêm dữ liệu vào DataTable
+			DataRow newRow = dataTable.NewRow();
+			newRow["MaHoaDon"] = maHoaDon;
+			newRow["NgayNhap"] = ngayNhap;
+			newRow["MaKho"] = maKho;
+			newRow["MaNhaCungCap"] = maNCC;
+			newRow["MaNhanVien"] = maNV;
+			newRow["TongTien"] = tongTien; // Cập nhật giá trị này theo logic của bạn
 
-			// Thực hiện thêm dữ liệu vào database
-			string queryThem = $@"
-								INSERT INTO NhapKho (MaHoaDon, NgayNhap, MaNhaCungCap, MaKho, MaNhanVien)
-								VALUES ('{maHoaDon}', '{ngayNhap.ToString("yyyy-MM-dd")}', '{maNCC}', '{maKho}', '{maNV}')";
+			// Thêm dòng mới vào DataTable
+			dataTable.Rows.Add(newRow);
 
-			// Thực hiện thêm dữ liệu bằng DatabaseConnector
-			int rowsAffected = dbConnector.ExecuteNonQuery(queryThem);
-
-			// Kiểm tra xem dữ liệu có được thêm thành công không
-			if (rowsAffected > 0)
-			{
-				// Thông báo thành công hoặc thực hiện các hành động cần thiết
-				MessageBox.Show("Thêm dữ liệu thành công");
-
-				// Cập nhật DataGridView hoặc thực hiện các hành động cần thiết khác
-				RefreshData();
-			}
-			else
-			{
-				// Thông báo lỗi hoặc thực hiện các hành động cần thiết
-				MessageBox.Show("Không thể thêm dữ liệu");
-			}
-
-			
+			// Làm mới các controls
+			RefreshData();
 		}
 
 		private void btnXoa_Click(object sender, EventArgs e)
 		{
-			// Lấy mã hóa đơn từ TextBox
 			string maHoaDon = txtMaHoaDon.Text;
 
-			// Kiểm tra xem mã hóa đơn có giá trị không
 			if (!string.IsNullOrEmpty(maHoaDon))
 			{
-				// Xác nhận xóa với người dùng trước khi thực hiện
-				DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận xóa", MessageBoxButtons.YesNo);
-				if (dialogResult == DialogResult.Yes)
+				// Tìm dòng cần xóa trong DataTable
+				DataRow rowToDelete = dataTable.Select($"MaHoaDon = '{maHoaDon}'").FirstOrDefault();
+
+				if (rowToDelete != null)
 				{
-					// Nếu người dùng đồng ý, thực hiện truy vấn DELETE
-					string queryXoa = $"DELETE FROM NhapKho WHERE MaHoaDon = '{maHoaDon}'";
+					// Xóa dòng khỏi DataTable
+					dataTable.Rows.Remove(rowToDelete);
 
-					// Thực hiện truy vấn DELETE
-					int rowsAffected = dbConnector.ExecuteNonQuery(queryXoa);
-
-					// Kiểm tra xem có bản ghi nào được xóa không
-					if (rowsAffected > 0)
-					{
-						MessageBox.Show("Xóa thành công.");
-
-						// Sau khi xóa, làm mới DataGridView và các controls khác
-						RefreshData();
-					}
-					else
-					{
-						MessageBox.Show("Không tìm thấy bản ghi để xóa.");
-					}
+					// Làm mới các controls
+					RefreshData();
+				}
+				else
+				{
+					MessageBox.Show("Không tìm thấy bản ghi để xóa trong DataTable.");
 				}
 			}
 			else
@@ -210,87 +179,37 @@ namespace QuanLyVatLieuXayDung
 
 		private void btnSua_Click(object sender, EventArgs e)
 		{
-			// Lấy thông tin từ các controls
 			string maHoaDon = txtMaHoaDon.Text;
-			DateTime ngayNhap = datNgayNhap.Value;
-			string maKho = ccbKho.SelectedValue.ToString();
-			string maNhaCungCap = ccbNhaCungCap.SelectedValue.ToString();
 
-			// Kiểm tra xem các giá trị có hợp lệ không
-			if (!string.IsNullOrEmpty(maHoaDon) && ngayNhap != DateTime.MinValue && !string.IsNullOrEmpty(maKho) && !string.IsNullOrEmpty(maNhaCungCap))
+			if (!string.IsNullOrEmpty(maHoaDon))
 			{
-				// Xác nhận với người dùng trước khi thực hiện
-				DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn cập nhật?", "Xác nhận cập nhật", MessageBoxButtons.YesNo);
-				if (dialogResult == DialogResult.Yes)
+				// Tìm dòng cần sửa trong DataTable
+				DataRow rowToUpdate = dataTable.Select($"MaHoaDon = '{maHoaDon}'").FirstOrDefault();
+
+				if (rowToUpdate != null)
 				{
-					// Nếu người dùng đồng ý, thực hiện truy vấn UPDATE
-					string querySua = $"UPDATE NhapKho SET NgayNhap = '{ngayNhap:yyyy-MM-dd}', MaKho = '{maKho}', MaNhaCungCap = '{maNhaCungCap}', MaNhanVien = '{maNV}' WHERE MaHoaDon = '{maHoaDon}'";
+					// Cập nhật dữ liệu trong DataRow
+					rowToUpdate["NgayNhap"] = datNgayNhap.Value;
+					rowToUpdate["MaKho"] = ccbKho.SelectedValue.ToString();
+					rowToUpdate["MaNhaCungCap"] = ccbNhaCungCap.SelectedValue.ToString();
 
-					// Thực hiện truy vấn UPDATE
-					int rowsAffected = dbConnector.ExecuteNonQuery(querySua);
-
-					// Kiểm tra xem có bản ghi nào được cập nhật không
-					if (rowsAffected > 0)
-					{
-						MessageBox.Show("Cập nhật thành công.");
-
-						// Sau khi cập nhật, làm mới DataGridView và các controls khác
-						RefreshData();
-					}
-					else
-					{
-						MessageBox.Show("Không tìm thấy bản ghi để cập nhật.");
-					}
+					// Làm mới các controls
+					RefreshData();
+				}
+				else
+				{
+					MessageBox.Show("Không tìm thấy bản ghi để cập nhật trong DataTable.");
 				}
 			}
 			else
 			{
-				MessageBox.Show("Vui lòng nhập đầy đủ thông tin cần cập nhật.");
+				MessageBox.Show("Vui lòng nhập mã hóa đơn cần cập nhật.");
 			}
 		}
 
 		private void btnNhapHang_Click(object sender, EventArgs e)
 		{
 
-		}
-
-		private void dgvNhapHang_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-		{
-			// Kiểm tra xem có dòng nào được chọn hay không
-			if (e.RowIndex >= 0)
-			{
-				// Lấy dữ liệu từ cell của dòng được chọn
-				DataGridViewRow selectedRow = dgvNhapHang.Rows[e.RowIndex];
-
-				// Đưa dữ liệu vào các TextBox và ComboBox
-				txtMaHoaDon.Text = selectedRow.Cells["MaHoaDon"].Value.ToString();
-
-				// Lấy giá trị của cột MaKho từ cell
-				string tenKho = selectedRow.Cells["TenKho"].Value.ToString();
-
-				// Set giá trị của ComboBox Kho
-				ccbKho.SelectedValue = tenKho;
-
-				// Lấy giá trị của cột MaNhaCungCap từ cell
-				string tenNhaCungCap = selectedRow.Cells["TenNhaCungCap"].Value.ToString();
-
-				// Set giá trị của ComboBox Nhà cung cấp
-				ccbNhaCungCap.SelectedValue = tenNhaCungCap;
-
-				string ngayNhapString = selectedRow.Cells["NgayNhap"].Value.ToString();
-				DateTime ngayNhap;
-
-				if (DateTime.TryParse(ngayNhapString, out ngayNhap))
-				{
-					// Chuyển đổi thành công, đặt giá trị vào datNgayNhap
-					datNgayNhap.Value = ngayNhap;
-				}
-				else
-				{
-					// Xử lý trường hợp không chuyển đổi được giá trị sang kiểu DateTime
-					MessageBox.Show("Không thể chuyển đổi giá trị NgayNhap sang kiểu DateTime.");
-				}
-			}
 		}
 
 		private void dgvNhapHang_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -305,16 +224,16 @@ namespace QuanLyVatLieuXayDung
 				txtMaHoaDon.Text = selectedRow.Cells["MaHoaDon"].Value.ToString();
 
 				// Lấy giá trị của cột MaKho từ cell
-				string tenKho = selectedRow.Cells["TenKho"].Value.ToString();
+				string maKho = selectedRow.Cells["MaKho"].Value.ToString();
 
 				// Set giá trị của ComboBox Kho
-				ccbKho.Text = tenKho;
+				ccbKho.SelectedValue = maKho;
 
 				// Lấy giá trị của cột MaNhaCungCap từ cell
-				string tenNhaCungCap = selectedRow.Cells["TenNhaCungCap"].Value.ToString();
+				string maNhaCungCap = selectedRow.Cells["MaNhaCungCap"].Value.ToString();
 
 				// Set giá trị của ComboBox Nhà cung cấp
-				ccbNhaCungCap.Text = tenNhaCungCap;
+				ccbNhaCungCap.SelectedValue = maNhaCungCap;
 
 				string ngayNhapString = selectedRow.Cells["NgayNhap"].Value.ToString();
 				DateTime ngayNhap;
@@ -330,6 +249,24 @@ namespace QuanLyVatLieuXayDung
 					MessageBox.Show("Không thể chuyển đổi giá trị NgayNhap sang kiểu DateTime.");
 				}
 			}
+		}
+
+		private void btnLuu_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				dbConnector.UpdateDataTable(dataTable, "NhapKho");
+				MessageBox.Show("Lưu dữ liệu thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"Lỗi khi lưu dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		private void btnHuy_Click(object sender, EventArgs e)
+		{
+			LoadDataTable();
 		}
 	}
 }

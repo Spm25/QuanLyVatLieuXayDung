@@ -98,15 +98,19 @@ namespace QuanLyVatLieuXayDung
 					using (SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter))
 					{
 						// Cập nhật chỉ các hàng đã thay đổi
-						dataAdapter.Update(dataTable.Select(null, null, DataViewRowState.Added | DataViewRowState.ModifiedCurrent));
+						dataAdapter.Update(dataTable.Select(null, null, DataViewRowState.Added | DataViewRowState.ModifiedOriginal));
 
 						// Xóa các hàng bị đánh dấu để xóa
-						foreach (DataRow row in dataTable.Select(null, null, DataViewRowState.Deleted))
+						DataRow[] deletedRows = dataTable.Select(null, null, DataViewRowState.Deleted);
+						foreach (DataRow row in deletedRows)
 						{
 							row.RejectChanges();
 							dataAdapter.DeleteCommand = commandBuilder.GetDeleteCommand();
 							dataAdapter.Update(new DataRow[] { row });
 						}
+
+						// Làm mới cơ sở dữ liệu
+						dataAdapter.Update(dataTable);
 					}
 				}
 			}
