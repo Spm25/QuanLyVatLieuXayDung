@@ -32,6 +32,7 @@ namespace QuanLyVatLieuXayDung
 			lbKho.Text = kho;
 			lbTongTien.Text = tongTien;
 			lbTen.Text = tenNV;
+			rdbHoaDon.Checked = true;
 		}
 
 		private void FormChiTietNhapKho_Load(object sender, EventArgs e)

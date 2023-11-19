@@ -281,6 +281,7 @@ namespace QuanLyVatLieuXayDung
 		private void btnHuy_Click(object sender, EventArgs e)
 		{
 			LoadDataTable();
+			RefreshData();
 		}
 
 		private void btnTimKiem_Click(object sender, EventArgs e)
