@@ -209,7 +209,40 @@ namespace QuanLyVatLieuXayDung
 
 		private void btnNhapHang_Click(object sender, EventArgs e)
 		{
+			string tuKhoa = txtTimKiem.Text;
+			string loaiTimKiem = "";
 
+			if (rdbMaHang.Checked)
+			{
+				loaiTimKiem = "MaHang";
+			}
+			else if (rdbNgayNhap.Checked)
+			{
+				loaiTimKiem = "NgayNhap";
+			}
+			else if (rdbMaKho.Checked)
+			{
+				loaiTimKiem = "MaKho";
+			}
+
+			string query = "";
+			switch (loaiTimKiem)
+			{
+				case "MaHang":
+					query = $"SELECT * FROM NhapKho WHERE MaHoaDon LIKE '%{tuKhoa}%'";
+					break;
+				case "NgayNhap":
+					query = $"SELECT * FROM NhapKho WHERE NgayNhap LIKE '%{tuKhoa}%'";
+					break;
+				case "MaKho":
+					query = $"SELECT * FROM NhapKho WHERE MaKho LIKE '%{tuKhoa}%'";
+					break;
+					// Thêm các trường hợp khác tùy theo nhu cầu
+			}
+
+			dgvNhapHang.DataSource = dbConnector.ExecuteQuery(query);
+
+			// Hiển thị kết quả tìm kiếm trên DataGridView hoặc các controls khác tùy vào thiết kế giao diện của bạn
 		}
 
 		private void dgvNhapHang_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
