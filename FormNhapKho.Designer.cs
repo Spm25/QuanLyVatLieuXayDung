@@ -238,7 +238,7 @@
 			// btnNhapHang
 			// 
 			this.btnNhapHang.Font = new System.Drawing.Font("Roboto Slab", 12F);
-			this.btnNhapHang.Location = new System.Drawing.Point(19, 196);
+			this.btnNhapHang.Location = new System.Drawing.Point(19, 318);
 			this.btnNhapHang.Name = "btnNhapHang";
 			this.btnNhapHang.Size = new System.Drawing.Size(158, 43);
 			this.btnNhapHang.TabIndex = 0;
@@ -251,7 +251,7 @@
 			this.btnHuy.Font = new System.Drawing.Font("Roboto Slab", 12F);
 			this.btnHuy.Image = global::QuanLyVatLieuXayDung.Properties.Resources.cancel;
 			this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnHuy.Location = new System.Drawing.Point(19, 315);
+			this.btnHuy.Location = new System.Drawing.Point(19, 260);
 			this.btnHuy.Name = "btnHuy";
 			this.btnHuy.Size = new System.Drawing.Size(158, 43);
 			this.btnHuy.TabIndex = 0;
@@ -264,7 +264,7 @@
 			this.btnSua.Font = new System.Drawing.Font("Roboto Slab", 12F);
 			this.btnSua.Image = global::QuanLyVatLieuXayDung.Properties.Resources.edit;
 			this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnSua.Location = new System.Drawing.Point(19, 138);
+			this.btnSua.Location = new System.Drawing.Point(19, 144);
 			this.btnSua.Name = "btnSua";
 			this.btnSua.Size = new System.Drawing.Size(158, 43);
 			this.btnSua.TabIndex = 0;
@@ -277,7 +277,7 @@
 			this.btnLuu.Font = new System.Drawing.Font("Roboto Slab", 12F);
 			this.btnLuu.Image = global::QuanLyVatLieuXayDung.Properties.Resources.check;
 			this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnLuu.Location = new System.Drawing.Point(19, 255);
+			this.btnLuu.Location = new System.Drawing.Point(19, 201);
 			this.btnLuu.Name = "btnLuu";
 			this.btnLuu.Size = new System.Drawing.Size(158, 43);
 			this.btnLuu.TabIndex = 0;
