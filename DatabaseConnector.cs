@@ -44,6 +44,7 @@ namespace QuanLyVatLieuXayDung
 				using (SqlDataReader reader = command.ExecuteReader())
 				{
 					dataTable.Load(reader);
+					CloseConnection();
 					return dataTable;
 				}
 			}
@@ -54,6 +55,7 @@ namespace QuanLyVatLieuXayDung
 			OpenConnection();
 			using (SqlCommand command = new SqlCommand(query, connection))
 			{
+				CloseConnection();
 				return command.ExecuteNonQuery();
 			}
 		}

@@ -32,7 +32,6 @@ namespace QuanLyVatLieuXayDung
 			lbKho.Text = kho;
 			lbTongTien.Text = tongTien;
 			lbTen.Text = tenNV;
-			rdbHoaDon.Checked = true;
 		}
 
 		private void FormChiTietNhapKho_Load(object sender, EventArgs e)
@@ -89,7 +88,7 @@ namespace QuanLyVatLieuXayDung
 		private void RefreshData()
 		{
 			// Làm mới DataGridView
-			dgvNhapHang.DataSource = dataTable;
+			dgvChiTietNhapKho.DataSource = dataTable;
 
 			// Làm mới các controls khác
 			// ...
@@ -102,9 +101,10 @@ namespace QuanLyVatLieuXayDung
 		}
 		private void LoadDataTable()
 		{
-			string queryChiTietNhapKho = @"SELECT * FROM ChiTietNhapKho";
+			string maHoaDon = lbMaHoaDon.Text;
+			string queryChiTietNhapKho = $"SELECT * FROM ChiTietNhapKho WHERE MaHoaDon = '{maHoaDon}'";
 			dataTable = dbConnector.ExecuteQuery(queryChiTietNhapKho);
-			dgvNhapHang.DataSource = dataTable;
+			dgvChiTietNhapKho.DataSource = dataTable;
 		}
 		
 		private void FormChiTietNhapKho_FormClosing(object sender, FormClosingEventArgs e)
@@ -218,7 +218,7 @@ namespace QuanLyVatLieuXayDung
 			if (e.RowIndex >= 0)
 			{
 				// Lấy dữ liệu từ cell của dòng được chọn
-				DataGridViewRow selectedRow = dgvNhapHang.Rows[e.RowIndex];
+				DataGridViewRow selectedRow = dgvChiTietNhapKho.Rows[e.RowIndex];
 
 				// Đưa dữ liệu vào các TextBox và Label
 				txtMaVatTu.Text = selectedRow.Cells["MaVatTu"].Value.ToString();
@@ -269,36 +269,6 @@ namespace QuanLyVatLieuXayDung
 		private void txtSoLuong_TextChanged(object sender, EventArgs e)
 		{
 			UpdateThanhTien();
-		}
-
-		private void btnTimKiem_Click(object sender, EventArgs e)
-		{
-			string tuKhoa = txtTimKiem.Text;
-			string loaiTimKiem = "";
-
-			if (rdbHoaDon.Checked)
-			{
-				loaiTimKiem = "HoaDon";
-			}
-			else if (rdbVatTu.Checked)
-			{
-				loaiTimKiem = "VatTu";
-			}
-
-			string query = "";
-			switch (loaiTimKiem)
-			{
-				case "HoaDon":
-					query = $"SELECT * FROM ChiTietNhapKho WHERE MaHoaDon LIKE '%{tuKhoa}%'";
-					break;
-				case "VatTu":
-					query = $"SELECT * FROM ChiTietNhapKho WHERE MaVatTu LIKE '%{tuKhoa}%'";
-					break;
-			}
-
-			dgvNhapHang.DataSource = dbConnector.ExecuteQuery(query);
-
-
 		}
 	}
 }

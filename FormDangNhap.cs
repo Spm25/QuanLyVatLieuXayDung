@@ -22,7 +22,6 @@ namespace QuanLyVatLieuXayDung
 			Application.Exit();
 		}
 
-		
 		private void btnDangNhap_Click(object sender, EventArgs e)
 		{
 			string userName = txtUserName.Text;
@@ -44,6 +43,8 @@ namespace QuanLyVatLieuXayDung
 			}
 			else
 			{
+				txtPassword.Text = string.Empty;
+				txtUserName.Text = string.Empty;
 				MessageBox.Show("Tài khoản hoặc mật khẩu không đúng. Vui lòng thử lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
