@@ -442,7 +442,6 @@
 			this.Controls.Add(this.dgvNhapHang);
 			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.groupBox1);
-			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
 			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.Name = "FormNhapKho";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

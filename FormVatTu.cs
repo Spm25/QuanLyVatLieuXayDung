@@ -74,7 +74,7 @@ namespace QuanLyVatLieuXayDung
 			else
 			{
 				// Truy vấn dữ liệu từ bảng VatTu với các thông tin cần lấy
-				query = "SELECT vt.TenVatTu, dv.TenDonViTinh, vt.GiaNhap, ncc.TenNhaCungCap, ctkh.SoLuong, kh.TenKho " +
+				query = "SELECT vt.TenVatTu, dv.TenDonViTinh, vt.GiaNhap, ncc.TenNhaCungCap, ctkh.SoLuong " +
 							   "FROM VatTu vt " +
 							   "JOIN DonViTinh dv ON vt.MaDonViTinh = dv.MaDonViTinh " +
 							   "JOIN NhaCungCap ncc ON vt.MaNhaCungCap = ncc.MaNhaCungCap " +
@@ -203,6 +203,36 @@ namespace QuanLyVatLieuXayDung
 			}
 
 			dataTable.DefaultView.RowFilter = filterExpression;
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			if (dgvVatTu.Rows.Count == 0)
+			{
+				MessageBox.Show("Không có dữ liệu để xuất excel.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				return;
+			}
+			string title = "VẬT TƯ TRONG " + cbbKho.Text.ToUpper();
+			string[] columnNames = { "Tên vật tư", "Đơn vị", "Giá nhập", "Nhà cung cấp", "Số lượng" };
+			DataTable excel = dgvVatTu.DataSource as DataTable;
+			ExcelExportHelper.baoCaoTheoKho(excel, title, columnNames);
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			if (dgvVatTu.Rows.Count == 0)
+			{
+				MessageBox.Show("Không có dữ liệu để xuất excel.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				return;
+			}
+
+			// Lấy dữ liệu từ DataGridView
+			DataTable db = dgvVatTu.DataSource as DataTable;
+
+			// Mở form ReportVatTu và truyền dữ liệu
+			ReportVatTu reportVatTu = new ReportVatTu(db);
+			
+			reportVatTu.ShowDialog(this);
 		}
 	}
 }

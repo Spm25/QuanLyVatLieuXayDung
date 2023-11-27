@@ -46,12 +46,12 @@
 			this.rdbTenNCC = new System.Windows.Forms.RadioButton();
 			this.label1 = new System.Windows.Forms.Label();
 			this.gnHienThi = new System.Windows.Forms.GroupBox();
+			this.button2 = new System.Windows.Forms.Button();
+			this.button1 = new System.Windows.Forms.Button();
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
 			this.cbbKho = new System.Windows.Forms.ComboBox();
 			this.btnKho = new System.Windows.Forms.Button();
 			this.dgvVatTu = new System.Windows.Forms.DataGridView();
-			this.button2 = new System.Windows.Forms.Button();
-			this.button1 = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.gbTimKiem.SuspendLayout();
 			this.gbDoLon.SuspendLayout();
@@ -268,6 +268,28 @@
 			this.gnHienThi.TabStop = false;
 			this.gnHienThi.Text = "Hiển thị";
 			// 
+			// button2
+			// 
+			this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button2.Location = new System.Drawing.Point(865, 31);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(133, 42);
+			this.button2.TabIndex = 3;
+			this.button2.Text = "Report";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
+			// 
+			// button1
+			// 
+			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button1.Location = new System.Drawing.Point(670, 31);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(133, 42);
+			this.button1.TabIndex = 4;
+			this.button1.Text = "Excel";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
 			// groupBox5
 			// 
 			this.groupBox5.Controls.Add(this.cbbKho);
@@ -311,26 +333,6 @@
 			this.dgvVatTu.RowTemplate.Height = 24;
 			this.dgvVatTu.Size = new System.Drawing.Size(1208, 407);
 			this.dgvVatTu.TabIndex = 2;
-			// 
-			// button2
-			// 
-			this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button2.Location = new System.Drawing.Point(865, 31);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(133, 42);
-			this.button2.TabIndex = 3;
-			this.button2.Text = "Report";
-			this.button2.UseVisualStyleBackColor = true;
-			// 
-			// button1
-			// 
-			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button1.Location = new System.Drawing.Point(670, 31);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(133, 42);
-			this.button1.TabIndex = 4;
-			this.button1.Text = "Excel";
-			this.button1.UseVisualStyleBackColor = true;
 			// 
 			// FormVatTu
 			// 
