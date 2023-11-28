@@ -11,24 +11,29 @@ using System.Windows.Forms;
 
 namespace QuanLyVatLieuXayDung
 {
-    public partial class FormBaoCao : Form
+    public partial class FormBaoCao3 : Form
     {
 		private readonly DatabaseConnector dbConnector;
 		private DataTable dataTable;
-		public FormBaoCao()
+		public FormBaoCao3()
         {
             InitializeComponent();
 			dbConnector = new DatabaseConnector();
 		}
 
-		private void FormBaoCao_Load(object sender, EventArgs e)
+		private void FormBaoCao3_Load(object sender, EventArgs e)
 		{
 			LoadComboBox();
 		}
 
 		private void LoadComboBox()
 		{
-			cbbLoai.SelectedIndex = 0;
+			//Load combo box cho Khách hàng
+			string queryKhachHang = "Select TenKhachHang, MaKhachHang From KhachHang";
+			cbbKhachHang.DataSource = dbConnector.ExecuteQuery(queryKhachHang);
+			cbbKhachHang.DisplayMember = "TenKhachHang";
+			cbbKhachHang.ValueMember = "MaKhachHang";
+			cbbKhachHang.SelectedIndex = 0;
 		}
 
 		private void txtSoLuong_KeyPress(object sender, KeyPressEventArgs e)
@@ -41,40 +46,39 @@ namespace QuanLyVatLieuXayDung
 			}
 		}
 
-		private void datKetThuc_ValueChanged(object sender, EventArgs e)
+		private void datBatDau2_ValueChanged(object sender, EventArgs e)
 		{
 			// Kiểm tra xem datKetThuc có nhỏ hơn datBatDau không
-			if (datKetThuc.Value < datBatDau.Value)
+			if (datKetThuc2.Value < datBatDau2.Value)
 			{
 				MessageBox.Show("Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 				// Đặt lại giá trị của datKetThuc thành giá trị trước đó
-				datKetThuc.Value = datBatDau.Value;
+				datKetThuc2.Value = datBatDau2.Value;
 			}
-
 		}
 
-		private void datBatDau_ValueChanged(object sender, EventArgs e)
+		private void datKetThuc2_ValueChanged(object sender, EventArgs e)
 		{
 			// Kiểm tra xem datKetThuc có nhỏ hơn datBatDau không
-			if (datBatDau.Value > datKetThuc.Value)
+			if (datBatDau2.Value > datKetThuc2.Value)
 			{
 				MessageBox.Show("Ngày bắt đầu nhỏ hơn hoặc bằng ngày kết thúc.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 				// Đặt lại giá trị của datKetThuc thành giá trị trước đó
-				datBatDau.Value = datKetThuc.Value;
+				datBatDau2.Value = datKetThuc2.Value;
 			}
 		}
 
-		private void btnBaoCao1_Click(object sender, EventArgs e)
+		private void btnBaoCao3_Click(object sender, EventArgs e)
 		{
-			string batDau = datBatDau.Text;
-			string ketThuc = datKetThuc.Text;
-			string loai = cbbLoai.Text == "Đã bán" ? "SanPhamBanDuoc " : "SanPhamKhongBanDuoc";
-			string query = $"SELECT * FROM {loai}('{batDau}', '{ketThuc}')";
+			string batDau = datBatDau2.Text;
+			string ketThuc = datKetThuc2.Text;
+			string maKH = cbbKhachHang.SelectedValue.ToString() ;
+			string query = $"SELECT * FROM dbo.GetHoaDonAndTongTienByKhachHang('{maKH}', '{batDau}', '{ketThuc}')";
 
-			dataTable = dbConnector.ExecuteQuery(query) ;
-			dgvBaoCao.DataSource = dataTable ;
+			dataTable = dbConnector.ExecuteQuery(query);
+			dgvBaoCao.DataSource = dataTable;
 			if (dgvBaoCao.RowCount == 1)
 			{
 				MessageBox.Show("Không tìm thấy kết quả nào.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -89,11 +93,12 @@ namespace QuanLyVatLieuXayDung
 				return;
 			}
 			string title = "";
-			string batDau = datBatDau.Text;
-			string ketThuc = datKetThuc.Text;
-			string loai = cbbLoai.Text;
-			string[] columnNames = { "Mã vật tư", "Tên vật tư", "Số lần bán" };
-			title = $"Sản phẩm {loai} trong khoảng thời gian từ {batDau} đến {ketThuc}";
+			string batDau = datBatDau2.Text;
+			string ketThuc = datKetThuc2.Text;
+			string maKH = cbbKhachHang.SelectedValue.ToString();
+
+			string[] columnNames = { "Mã hóa đơn", "Ngày xuất", "Thuế VAT", "Trị giá", "Tổng tiền mua hàng" };
+			title = $"Danh sách hoá đơn và tổng tiền mua hàng của một khách hàng theo quý chọn trước.";
 			DataTable excel = dgvBaoCao.DataSource as DataTable;
 			ExcelExportHelper.baoCaoTheoKho(excel, title, columnNames);
 		}

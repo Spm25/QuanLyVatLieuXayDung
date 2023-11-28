@@ -71,11 +71,17 @@
     <Compile Include="AccountManager.cs" />
     <Compile Include="DatabaseConnector.cs" />
     <Compile Include="ExcelExportHelper.cs" />
-    <Compile Include="FormBaoCao - Copy.cs">
+    <Compile Include="FormBaoCao3.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormBaoCao - Copy.Designer.cs">
-      <DependentUpon>FormBaoCao - Copy.cs</DependentUpon>
+    <Compile Include="FormBaoCao3.Designer.cs">
+      <DependentUpon>FormBaoCao3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBaoCao2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBaoCao2.Designer.cs">
+      <DependentUpon>FormBaoCao2.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDangNhap.cs">
       <SubType>Form</SubType>
@@ -126,8 +132,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VatTu.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormBaoCao - Copy.resx">
-      <DependentUpon>FormBaoCao - Copy.cs</DependentUpon>
+    <EmbeddedResource Include="FormBaoCao3.resx">
+      <DependentUpon>FormBaoCao3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBaoCao2.resx">
+      <DependentUpon>FormBaoCao2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDangNhap.resx">
       <DependentUpon>FormDangNhap.cs</DependentUpon>

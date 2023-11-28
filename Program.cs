@@ -16,7 +16,7 @@ namespace QuanLyVatLieuXayDung
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormVatTu());
+            Application.Run(new FormBaoCao3());
         }
     }
 }

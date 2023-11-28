@@ -30,20 +30,6 @@
         {
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.groupBox4 = new System.Windows.Forms.GroupBox();
-			this.datKetThuc2 = new System.Windows.Forms.DateTimePicker();
-			this.label8 = new System.Windows.Forms.Label();
-			this.datBatDau2 = new System.Windows.Forms.DateTimePicker();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label10 = new System.Windows.Forms.Label();
-			this.cbbKhachHang = new System.Windows.Forms.ComboBox();
-			this.btnBaoCao3 = new System.Windows.Forms.Button();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.txtSoLuong = new System.Windows.Forms.TextBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.cbbKho = new System.Windows.Forms.ComboBox();
-			this.btnBaoCao2 = new System.Windows.Forms.Button();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.datKetThuc = new System.Windows.Forms.DateTimePicker();
 			this.label2 = new System.Windows.Forms.Label();
@@ -57,8 +43,6 @@
 			this.button2 = new System.Windows.Forms.Button();
 			this.button1 = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
-			this.groupBox4.SuspendLayout();
-			this.groupBox3.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvBaoCao)).BeginInit();
 			this.groupBox5.SuspendLayout();
@@ -67,12 +51,10 @@
 			// groupBox1
 			// 
 			this.groupBox1.Controls.Add(this.label1);
-			this.groupBox1.Controls.Add(this.groupBox4);
-			this.groupBox1.Controls.Add(this.groupBox3);
 			this.groupBox1.Controls.Add(this.groupBox2);
 			this.groupBox1.Location = new System.Drawing.Point(86, 12);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(1208, 337);
+			this.groupBox1.Size = new System.Drawing.Size(1208, 157);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			// 
@@ -85,153 +67,6 @@
 			this.label1.Size = new System.Drawing.Size(138, 39);
 			this.label1.TabIndex = 1;
 			this.label1.Text = "Báo cáo";
-			// 
-			// groupBox4
-			// 
-			this.groupBox4.Controls.Add(this.datKetThuc2);
-			this.groupBox4.Controls.Add(this.label8);
-			this.groupBox4.Controls.Add(this.datBatDau2);
-			this.groupBox4.Controls.Add(this.label9);
-			this.groupBox4.Controls.Add(this.label10);
-			this.groupBox4.Controls.Add(this.cbbKhachHang);
-			this.groupBox4.Controls.Add(this.btnBaoCao3);
-			this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.groupBox4.Location = new System.Drawing.Point(6, 245);
-			this.groupBox4.Name = "groupBox4";
-			this.groupBox4.Size = new System.Drawing.Size(1196, 86);
-			this.groupBox4.TabIndex = 0;
-			this.groupBox4.TabStop = false;
-			this.groupBox4.Text = "Các sản phẩm";
-			// 
-			// datKetThuc2
-			// 
-			this.datKetThuc2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.datKetThuc2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.datKetThuc2.Location = new System.Drawing.Point(861, 44);
-			this.datKetThuc2.Name = "datKetThuc2";
-			this.datKetThuc2.Size = new System.Drawing.Size(131, 27);
-			this.datKetThuc2.TabIndex = 5;
-			this.datKetThuc2.ValueChanged += new System.EventHandler(this.datKetThuc2_ValueChanged);
-			// 
-			// label8
-			// 
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(761, 49);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(72, 20);
-			this.label8.TabIndex = 4;
-			this.label8.Text = "Bắt đầu:";
-			// 
-			// datBatDau2
-			// 
-			this.datBatDau2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.datBatDau2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.datBatDau2.Location = new System.Drawing.Point(586, 44);
-			this.datBatDau2.Name = "datBatDau2";
-			this.datBatDau2.Size = new System.Drawing.Size(131, 27);
-			this.datBatDau2.TabIndex = 5;
-			this.datBatDau2.ValueChanged += new System.EventHandler(this.datBatDau2_ValueChanged);
-			// 
-			// label9
-			// 
-			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(499, 49);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(72, 20);
-			this.label9.TabIndex = 4;
-			this.label9.Text = "Bắt đầu:";
-			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(166, 49);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(102, 20);
-			this.label10.TabIndex = 4;
-			this.label10.Text = "Khách hàng:";
-			// 
-			// cbbKhachHang
-			// 
-			this.cbbKhachHang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbbKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cbbKhachHang.FormattingEnabled = true;
-			this.cbbKhachHang.Location = new System.Drawing.Point(289, 43);
-			this.cbbKhachHang.Name = "cbbKhachHang";
-			this.cbbKhachHang.Size = new System.Drawing.Size(182, 28);
-			this.cbbKhachHang.TabIndex = 3;
-			// 
-			// btnBaoCao3
-			// 
-			this.btnBaoCao3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnBaoCao3.Location = new System.Drawing.Point(17, 43);
-			this.btnBaoCao3.Name = "btnBaoCao3";
-			this.btnBaoCao3.Size = new System.Drawing.Size(125, 33);
-			this.btnBaoCao3.TabIndex = 0;
-			this.btnBaoCao3.Text = "Báo cáo";
-			this.btnBaoCao3.UseVisualStyleBackColor = true;
-			this.btnBaoCao3.Click += new System.EventHandler(this.btnBaoCao3_Click);
-			// 
-			// groupBox3
-			// 
-			this.groupBox3.Controls.Add(this.txtSoLuong);
-			this.groupBox3.Controls.Add(this.label6);
-			this.groupBox3.Controls.Add(this.label7);
-			this.groupBox3.Controls.Add(this.cbbKho);
-			this.groupBox3.Controls.Add(this.btnBaoCao2);
-			this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.groupBox3.Location = new System.Drawing.Point(6, 153);
-			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(1196, 86);
-			this.groupBox3.TabIndex = 0;
-			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "Hóa đơn tổng tiền nhập lớn nhất";
-			// 
-			// txtSoLuong
-			// 
-			this.txtSoLuong.Location = new System.Drawing.Point(486, 46);
-			this.txtSoLuong.Name = "txtSoLuong";
-			this.txtSoLuong.Size = new System.Drawing.Size(97, 27);
-			this.txtSoLuong.TabIndex = 5;
-			this.txtSoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuong_KeyPress);
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(399, 49);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(74, 20);
-			this.label6.TabIndex = 4;
-			this.label6.Text = "Số lượng";
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(166, 49);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(43, 20);
-			this.label7.TabIndex = 4;
-			this.label7.Text = "Kho:";
-			// 
-			// cbbKho
-			// 
-			this.cbbKho.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbbKho.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cbbKho.FormattingEnabled = true;
-			this.cbbKho.Location = new System.Drawing.Point(243, 43);
-			this.cbbKho.Name = "cbbKho";
-			this.cbbKho.Size = new System.Drawing.Size(135, 28);
-			this.cbbKho.TabIndex = 3;
-			// 
-			// btnBaoCao2
-			// 
-			this.btnBaoCao2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnBaoCao2.Location = new System.Drawing.Point(17, 43);
-			this.btnBaoCao2.Name = "btnBaoCao2";
-			this.btnBaoCao2.Size = new System.Drawing.Size(125, 33);
-			this.btnBaoCao2.TabIndex = 0;
-			this.btnBaoCao2.Text = "Báo cáo";
-			this.btnBaoCao2.UseVisualStyleBackColor = true;
-			this.btnBaoCao2.Click += new System.EventHandler(this.btnBaoCao2_Click);
 			// 
 			// groupBox2
 			// 
@@ -325,7 +160,7 @@
 			// 
 			this.dgvBaoCao.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dgvBaoCao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvBaoCao.Location = new System.Drawing.Point(86, 432);
+			this.dgvBaoCao.Location = new System.Drawing.Point(86, 258);
 			this.dgvBaoCao.Name = "dgvBaoCao";
 			this.dgvBaoCao.RowHeadersWidth = 51;
 			this.dgvBaoCao.RowTemplate.Height = 24;
@@ -337,7 +172,7 @@
 			this.groupBox5.Controls.Add(this.button2);
 			this.groupBox5.Controls.Add(this.button1);
 			this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.groupBox5.Location = new System.Drawing.Point(86, 349);
+			this.groupBox5.Location = new System.Drawing.Point(86, 175);
 			this.groupBox5.Name = "groupBox5";
 			this.groupBox5.Size = new System.Drawing.Size(1208, 71);
 			this.groupBox5.TabIndex = 0;
@@ -362,6 +197,7 @@
 			this.button1.TabIndex = 0;
 			this.button1.Text = "Excel";
 			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// FormBaoCao
 			// 
@@ -378,10 +214,6 @@
 			this.Load += new System.EventHandler(this.FormBaoCao_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
-			this.groupBox4.ResumeLayout(false);
-			this.groupBox4.PerformLayout();
-			this.groupBox3.ResumeLayout(false);
-			this.groupBox3.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvBaoCao)).EndInit();
@@ -403,20 +235,6 @@
 		private System.Windows.Forms.ComboBox cbbLoai;
 		private System.Windows.Forms.DateTimePicker datKetThuc;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.GroupBox groupBox4;
-		private System.Windows.Forms.DateTimePicker datKetThuc2;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.DateTimePicker datBatDau2;
-		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.Label label10;
-		private System.Windows.Forms.ComboBox cbbKhachHang;
-		private System.Windows.Forms.Button btnBaoCao3;
-		private System.Windows.Forms.GroupBox groupBox3;
-		private System.Windows.Forms.TextBox txtSoLuong;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.ComboBox cbbKho;
-		private System.Windows.Forms.Button btnBaoCao2;
 		private System.Windows.Forms.GroupBox groupBox5;
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Button button1;
