@@ -127,6 +127,7 @@
 			this.txtGiaTri2.Name = "txtGiaTri2";
 			this.txtGiaTri2.Size = new System.Drawing.Size(100, 24);
 			this.txtGiaTri2.TabIndex = 6;
+			this.txtGiaTri2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaTri2_KeyPress);
 			// 
 			// txtGiaTri1
 			// 
@@ -134,6 +135,7 @@
 			this.txtGiaTri1.Name = "txtGiaTri1";
 			this.txtGiaTri1.Size = new System.Drawing.Size(100, 24);
 			this.txtGiaTri1.TabIndex = 6;
+			this.txtGiaTri1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaTri1_KeyPress);
 			// 
 			// cbbKhoangGiaTri
 			// 

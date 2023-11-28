@@ -86,11 +86,13 @@ namespace QuanLyVatLieuXayDung
 		}
 		private void button11_Click(object sender, EventArgs e)
 		{
+			openChildForm(new FormVatTu());
 			hideSubMenu();
 		}
 
 		private void button10_Click(object sender, EventArgs e)
 		{
+			openChildForm(new FormBaoCao());
 			hideSubMenu();
 		}
 		#endregion
@@ -112,5 +114,21 @@ namespace QuanLyVatLieuXayDung
 			childForm.Show();
 		}
 
+		private void button1_Click_1(object sender, EventArgs e)
+		{
+			openChildForm(new FormBaoCao2());
+			hideSubMenu();
+		}
+
+		private void button7_Click(object sender, EventArgs e)
+		{
+			openChildForm(new FormBaoCao3());
+			hideSubMenu();
+		}
+
+		private void button8_Click(object sender, EventArgs e)
+		{
+			Application.Exit();
+		}
 	}
 }

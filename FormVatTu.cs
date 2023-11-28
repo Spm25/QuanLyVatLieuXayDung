@@ -114,7 +114,7 @@ namespace QuanLyVatLieuXayDung
 
 		private void btnTimKiem_Click(object sender, EventArgs e)
 		{
-			string tuKhoa = txtTimKiem.Text;
+			string tuKhoa = txtTimKiem.Text.Trim();
 			string loaiTimKiem = "";
 			string khoHang = "";
 
@@ -131,6 +131,11 @@ namespace QuanLyVatLieuXayDung
 
 			if (dataTable != null && dataTable.Rows.Count > 0)
 			{
+				if (tuKhoa == string.Empty)
+				{
+					MessageBox.Show("Nhập thêm thông tin để tìm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					return;
+				}
 				string query = "";
 				switch (loaiTimKiem)
 				{
@@ -233,6 +238,26 @@ namespace QuanLyVatLieuXayDung
 			ReportVatTu reportVatTu = new ReportVatTu(db);
 			
 			reportVatTu.ShowDialog(this);
+		}
+
+		private void txtGiaTri1_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			// Kiểm tra xem ký tự được nhập có phải là số không
+			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+			{
+				// Nếu không phải là số, không cho phép nhập
+				e.Handled = true;
+			}
+		}
+
+		private void txtGiaTri2_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			// Kiểm tra xem ký tự được nhập có phải là số không
+			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+			{
+				// Nếu không phải là số, không cho phép nhập
+				e.Handled = true;
+			}
 		}
 	}
 }

@@ -36,9 +36,9 @@ namespace QuanLyVatLieuXayDung
 				AccountManager.Instance.CurrentAccount = account;
 
 				// Tài khoản hợp lệ, chuyển sang FormNhapHang và truyền thông tin tài khoản
-				FormNhapKho formNhapKho = new FormNhapKho();
+				FormManHinhChinh formManHinh = new FormManHinhChinh();
 				this.Hide();
-				formNhapKho.ShowDialog();
+				formManHinh.ShowDialog();
 				this.Close();
 			}
 			else
