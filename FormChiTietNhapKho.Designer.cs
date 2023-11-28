@@ -44,6 +44,7 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.btnXuatExcel = new System.Windows.Forms.Button();
 			this.btnHuy = new System.Windows.Forms.Button();
 			this.btnSua = new System.Windows.Forms.Button();
 			this.btnLuu = new System.Windows.Forms.Button();
@@ -59,7 +60,6 @@
 			this.label14 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.label15 = new System.Windows.Forms.Label();
-			this.btnXuatExcel = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -245,8 +245,21 @@
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Chức năng";
 			// 
+			// btnXuatExcel
+			// 
+			this.btnXuatExcel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+			this.btnXuatExcel.Font = new System.Drawing.Font("Roboto Slab", 12F);
+			this.btnXuatExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnXuatExcel.Location = new System.Drawing.Point(19, 312);
+			this.btnXuatExcel.Name = "btnXuatExcel";
+			this.btnXuatExcel.Size = new System.Drawing.Size(158, 43);
+			this.btnXuatExcel.TabIndex = 1;
+			this.btnXuatExcel.Text = "Hủy";
+			this.btnXuatExcel.UseVisualStyleBackColor = false;
+			// 
 			// btnHuy
 			// 
+			this.btnHuy.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
 			this.btnHuy.Font = new System.Drawing.Font("Roboto Slab", 12F);
 			this.btnHuy.Image = global::QuanLyVatLieuXayDung.Properties.Resources.cancel;
 			this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -255,11 +268,12 @@
 			this.btnHuy.Size = new System.Drawing.Size(158, 43);
 			this.btnHuy.TabIndex = 0;
 			this.btnHuy.Text = "Hủy";
-			this.btnHuy.UseVisualStyleBackColor = true;
+			this.btnHuy.UseVisualStyleBackColor = false;
 			this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
 			// 
 			// btnSua
 			// 
+			this.btnSua.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
 			this.btnSua.Font = new System.Drawing.Font("Roboto Slab", 12F);
 			this.btnSua.Image = global::QuanLyVatLieuXayDung.Properties.Resources.edit;
 			this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -268,11 +282,12 @@
 			this.btnSua.Size = new System.Drawing.Size(158, 43);
 			this.btnSua.TabIndex = 0;
 			this.btnSua.Text = "Sửa";
-			this.btnSua.UseVisualStyleBackColor = true;
+			this.btnSua.UseVisualStyleBackColor = false;
 			this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
 			// 
 			// btnLuu
 			// 
+			this.btnLuu.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
 			this.btnLuu.Font = new System.Drawing.Font("Roboto Slab", 12F);
 			this.btnLuu.Image = global::QuanLyVatLieuXayDung.Properties.Resources.check;
 			this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -281,11 +296,12 @@
 			this.btnLuu.Size = new System.Drawing.Size(158, 43);
 			this.btnLuu.TabIndex = 0;
 			this.btnLuu.Text = "Lưu";
-			this.btnLuu.UseVisualStyleBackColor = true;
+			this.btnLuu.UseVisualStyleBackColor = false;
 			this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
 			// 
 			// btnXoa
 			// 
+			this.btnXoa.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
 			this.btnXoa.Font = new System.Drawing.Font("Roboto Slab", 12F);
 			this.btnXoa.Image = global::QuanLyVatLieuXayDung.Properties.Resources.delete;
 			this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -294,11 +310,12 @@
 			this.btnXoa.Size = new System.Drawing.Size(158, 43);
 			this.btnXoa.TabIndex = 0;
 			this.btnXoa.Text = "Xóa";
-			this.btnXoa.UseVisualStyleBackColor = true;
+			this.btnXoa.UseVisualStyleBackColor = false;
 			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
 			// 
 			// btnThem
 			// 
+			this.btnThem.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
 			this.btnThem.Font = new System.Drawing.Font("Roboto Slab", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnThem.Image = global::QuanLyVatLieuXayDung.Properties.Resources.add;
 			this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -307,7 +324,7 @@
 			this.btnThem.Size = new System.Drawing.Size(158, 43);
 			this.btnThem.TabIndex = 0;
 			this.btnThem.Text = "Thêm";
-			this.btnThem.UseVisualStyleBackColor = true;
+			this.btnThem.UseVisualStyleBackColor = false;
 			this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
 			// 
 			// dgvChiTietNhapKho
@@ -412,17 +429,6 @@
 			this.label15.Size = new System.Drawing.Size(83, 20);
 			this.label15.TabIndex = 11;
 			this.label15.Text = "Mã vật tư:";
-			// 
-			// btnXuatExcel
-			// 
-			this.btnXuatExcel.Font = new System.Drawing.Font("Roboto Slab", 12F);
-			this.btnXuatExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnXuatExcel.Location = new System.Drawing.Point(19, 312);
-			this.btnXuatExcel.Name = "btnXuatExcel";
-			this.btnXuatExcel.Size = new System.Drawing.Size(158, 43);
-			this.btnXuatExcel.TabIndex = 1;
-			this.btnXuatExcel.Text = "Hủy";
-			this.btnXuatExcel.UseVisualStyleBackColor = true;
 			// 
 			// FormChiTietNhapKho
 			// 

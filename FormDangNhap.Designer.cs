@@ -109,6 +109,8 @@
 			this.btnThoat.Text = "Thoát";
 			this.btnThoat.UseVisualStyleBackColor = true;
 			this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+			this.btnThoat.MouseLeave += new System.EventHandler(this.btnThoat_MouseLeave);
+			this.btnThoat.MouseHover += new System.EventHandler(this.btnThoat_MouseHover);
 			// 
 			// pictureBox1
 			// 

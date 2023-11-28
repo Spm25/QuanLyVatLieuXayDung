@@ -119,13 +119,14 @@
 			// 
 			// btnBaoCao2
 			// 
+			this.btnBaoCao2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
 			this.btnBaoCao2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnBaoCao2.Location = new System.Drawing.Point(17, 43);
 			this.btnBaoCao2.Name = "btnBaoCao2";
 			this.btnBaoCao2.Size = new System.Drawing.Size(125, 33);
 			this.btnBaoCao2.TabIndex = 0;
 			this.btnBaoCao2.Text = "Báo cáo";
-			this.btnBaoCao2.UseVisualStyleBackColor = true;
+			this.btnBaoCao2.UseVisualStyleBackColor = false;
 			this.btnBaoCao2.Click += new System.EventHandler(this.btnBaoCao2_Click);
 			// 
 			// dgvBaoCao
@@ -152,23 +153,25 @@
 			// 
 			// button2
 			// 
+			this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
 			this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button2.Location = new System.Drawing.Point(190, 26);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(125, 33);
 			this.button2.TabIndex = 0;
 			this.button2.Text = "Report";
-			this.button2.UseVisualStyleBackColor = true;
+			this.button2.UseVisualStyleBackColor = false;
 			// 
 			// button1
 			// 
+			this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
 			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.button1.Location = new System.Drawing.Point(23, 26);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(125, 33);
 			this.button1.TabIndex = 0;
 			this.button1.Text = "Excel";
-			this.button1.UseVisualStyleBackColor = true;
+			this.button1.UseVisualStyleBackColor = false;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// FormBaoCao2

@@ -48,5 +48,15 @@ namespace QuanLyVatLieuXayDung
 				MessageBox.Show("Tài khoản hoặc mật khẩu không đúng. Vui lòng thử lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+
+		private void btnThoat_MouseHover(object sender, EventArgs e)
+		{
+			btnThoat.BackColor = Color.Red;
+		}
+
+		private void btnThoat_MouseLeave(object sender, EventArgs e)
+		{
+			btnThoat.BackColor = Color.LightGray;
+		}
 	}
 }
